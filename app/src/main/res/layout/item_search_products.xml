@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_marginBottom="25dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_veg" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginBottom="5dp"
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-4dp"
+                android:fontFamily="@font/sfpro_display_medium"
+                android:letterSpacing="0.0525"
+                android:text="Sada Dosa"
+                android:textColor="@color/black"
+                android:textSize="14.7sp" />
+
+
+            <TextView
+                android:padding="5dp"
+                android:background="@drawable/rect_pink_border2"
+                android:drawableEnd="@drawable/arrow"
+                android:id="@+id/size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sfpro_display_semibold"
+                android:letterSpacing="0.0525"
+                android:text="Size"
+                android:textColor="@color/blue"
+                android:textSize="13.3sp"
+                android:layout_marginLeft="3dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfpro_display_semibold"
+                    android:letterSpacing="0.0525"
+                    android:text="₹"
+                    android:textColor="@color/blue"
+                    android:textSize="13.3sp" />
+
+                <TextView
+                    android:id="@+id/total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfpro_display_semibold"
+                    android:letterSpacing="0.0525"
+                    android:text="220"
+                    android:textColor="@color/blue"
+                    android:textSize="13.3sp"
+                    android:layout_marginLeft="3dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/add_item_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_gray_border"
+                android:fontFamily="@font/sfpro_display_medium"
+                android:paddingLeft="25dp"
+                android:paddingTop="6dp"
+                android:paddingRight="25dp"
+                android:paddingBottom="8dp"
+                android:text="+ Add"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/add_cart_linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_silver_border"
+                android:orientation="horizontal"
+                android:paddingTop="6dp"
+                android:paddingBottom="8dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/minus_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfpro_display_medium"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:text="-"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfpro_display_medium"
+                    android:text="1"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/plus_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfpro_display_medium"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:text="+"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

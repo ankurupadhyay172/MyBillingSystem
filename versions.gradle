@@ -1,0 +1,8 @@
+
+ext.deps = [:]
+def versions =[:]
+versions.core = "1.7.10"
+
+def support = [:]
+support.core_ktx = "androidx.core:core-ktx:$versions.core"
+deps.support = support
