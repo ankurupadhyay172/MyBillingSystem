@@ -2,7 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
+        <variable
+            name="counter"
+            type="Integer" />
+        <variable
+            name="view"
+            type="android.view.View" />
     </data>
 
     <LinearLayout
@@ -41,7 +46,6 @@
             <TextView
                 android:padding="5dp"
                 android:background="@drawable/rect_pink_border2"
-                android:drawableEnd="@drawable/arrow"
                 android:id="@+id/size"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -97,7 +101,9 @@
                 android:text="+ Add"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                android:visibility="visible" />
+
+                android:visibility="@{counter==0?view.VISIBLE:view.GONE}"
+                 />
 
             <LinearLayout
                 android:id="@+id/add_cart_linear"
@@ -106,8 +112,8 @@
                 android:background="@drawable/rectangle_silver_border"
                 android:orientation="horizontal"
                 android:paddingTop="6dp"
-                android:paddingBottom="8dp"
-                android:visibility="gone">
+                android:visibility="@{counter>0?view.VISIBLE:view.GONE}"
+                android:paddingBottom="8dp">
 
                 <TextView
                     android:id="@+id/minus_txt"
@@ -125,8 +131,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/sfpro_display_medium"
-                    android:text="1"
                     android:textColor="@color/black"
+                    android:text="@{counter.toString()}"
                     android:textSize="14sp" />
 
                 <TextView

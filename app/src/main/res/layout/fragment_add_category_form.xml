@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    <variable
+        name="title"
+        type="String" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <ScrollView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16.7dp"
+                android:layout_marginEnd="16.7dp"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:paddingBottom="23.3dp">
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:clipToPadding="false"
+                    android:paddingTop="23.3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/sf_pro_display_regular"
+                        android:text="Add Category Image"
+                        android:textColor="@color/title_color_22282f"
+                        android:textSize="15sp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="87dp"
+                        android:layout_height="87dp"
+                        android:layout_marginStart="16.7dp"
+                        android:layout_marginEnd="16.7dp"
+                        android:layout_marginBottom="16.7dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="6.7dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_gravity="center">
+
+                            <ImageView
+                                android:layout_width="24.7dp"
+                                android:layout_height="24.7dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_add__1_" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:includeFontPadding="false"
+                    android:text="Category Name"
+                    android:textColor="@color/silver_909397"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rectangle_silver_border"
+                    android:fontFamily="@font/sf_pro_display_medium"
+                    android:hint="Enter category name"
+                    android:includeFontPadding="false"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="15dp"
+                    android:textColor="@color/title_color_22282f"
+                    android:textColorHint="@color/silver_909397"
+                    android:textSize="15sp" />
+
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:includeFontPadding="false"
+                    android:text="@{title}"
+                    android:textColor="@color/silver_909397"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edtTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rectangle_silver_border"
+                    android:fontFamily="@font/sf_pro_display_medium"
+                    android:hint="@{`Enter`+title}"
+                    android:includeFontPadding="false"
+                    android:inputType="textCapWords"
+                    android:padding="15dp"
+                    android:textColor="@color/title_color_22282f"
+                    android:textColorHint="@color/silver_909397"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submit"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="33.3dp"
+            android:layout_marginStart="16.7dp"
+            android:layout_marginEnd="16.7dp"
+            android:background="@drawable/rectangle_multi_gradient"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:includeFontPadding="false"
+            android:text="Submit"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+</layout>

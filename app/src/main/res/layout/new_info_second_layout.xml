@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#fafafa"
+    >
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        >
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+
+                <FrameLayout
+                    android:visibility="gone"
+                    android:layout_marginTop="56dp"
+                    android:id="@+id/pic1"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:padding="16dp"
+                    >
+
+                    <!--                pic1-->
+                    <ImageView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/img1"
+                        android:scaleType="centerCrop"
+                        />
+                </FrameLayout>
+
+
+                <LinearLayout
+                    android:layout_below="@+id/pic1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:id="@+id/linear1"
+                    >
+                    <ImageView
+
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/rect_school"
+                        android:gravity="center"
+                        />
+
+
+                    <TextView
+
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="CONTACT INFORMATION"
+                        android:textColor="@color/txt_color"
+                        android:textSize="19sp"
+                        android:gravity="center"
+
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/contact_info"
+                        android:textColor="@color/subtxt_gray"
+                        android:lineSpacingExtra="4dp"
+                        android:textSize="14.5sp"
+                        android:gravity="center"
+                        android:layout_marginLeft="33dp"
+                        android:layout_marginRight="33dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="16dp"
+                        />
+
+
+
+
+
+                    <TextView
+                        android:layout_marginTop="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Opening Hours"
+                        android:textColor="@color/txt_color"
+                        android:textSize="19sp"
+                        android:gravity="center"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/opeing_hours"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/subtxt_gray"
+                        android:lineSpacingExtra="4dp"
+                        android:textSize="14.5sp"
+                        android:gravity="center"
+                        android:layout_marginLeft="33dp"
+                        android:layout_marginRight="33dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="16dp"
+                        />
+
+                    <TextView
+                        android:layout_marginBottom="30dp"
+                        android:id="@+id/call"
+                        android:drawableLeft="@drawable/ic_call"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rect_red"
+                        android:text="02964 - 294772"
+                        android:textColor="#fff"
+                        android:gravity="center"
+                        android:padding="11dp"
+                        android:textSize="22dp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="70dp"
+                        android:layout_marginRight="70dp"
+                        android:layout_marginTop="33dp"
+
+                        />
+
+
+                </LinearLayout>
+
+
+                <FrameLayout
+                    android:visibility="gone"
+                    android:padding="16dp"
+                    android:layout_below="@+id/linear1"
+                    android:id="@+id/linear2"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp">
+
+                    <!--                pic2-->
+                    <ImageView
+                        android:src="@drawable/jffimage2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/img2"
+                        android:scaleType="centerCrop"
+                        />
+                </FrameLayout>
+
+
+                <LinearLayout
+                    android:layout_below="@+id/linear2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+                    <ImageView
+                        android:visibility="gone"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/circle"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+
+
+</RelativeLayout>

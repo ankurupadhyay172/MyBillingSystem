@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <!--    bg-->
+
+
+            <LinearLayout
+                android:layout_below="@+id/cover"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:visibility="gone"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_width="60dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/zigzag"
+                    android:gravity="center"
+
+
+                    />
+
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/title"
+                    android:layout_marginTop="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NA"
+                    android:textColor="@color/txt_color"
+                    android:textSize="19sp"
+                    android:gravity="center"
+
+                    />
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/subtxt_gray"
+                    android:lineSpacingExtra="4dp"
+                    android:textSize="14.5sp"
+                    android:gravity="center"
+                    android:layout_marginLeft="33dp"
+                    android:layout_marginRight="33dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="16dp" />
+
+
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:padding="16dp"
+                android:layout_below="@+id/linear1"
+                android:id="@+id/linear2"
+                android:layout_width="match_parent"
+                android:layout_height="230dp">
+
+                <!--                pic2-->
+                <ImageView
+                    android:src="@drawable/jffimage2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/img2"
+                    android:scaleType="centerCrop" />
+            </FrameLayout>
+
+
+            <include
+
+                layout="@layout/new_info_second_layout" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</layout>
+
+
+
+
+

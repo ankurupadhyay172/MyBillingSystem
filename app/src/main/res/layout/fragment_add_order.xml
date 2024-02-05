@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="isTable"
+            type="Boolean" />
+        <variable
+            name="fragment"
+            type="com.billing.mybilling.presentation.AddOrderFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/mainLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16.7dp"
+                    android:layout_marginTop="23.3dp"
+                    android:fontFamily="@font/sf_pro_display_semibold"
+                    android:includeFontPadding="false"
+                    android:text="Table No. *"
+                    android:textColor="@color/black_25303c"
+                    android:textSize="16.7sp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/edtTableNo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/sf_pro_display_regular"
+                        android:hint="Write Table No"
+                        android:textColor="@color/grey_828990"
+                        android:textSize="15sp" />
+
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16.7dp"
+                    android:layout_marginTop="23.3dp"
+                    android:fontFamily="@font/sf_pro_display_semibold"
+                    android:includeFontPadding="false"
+                    android:text="Customer Name"
+                    android:textColor="@color/black_25303c"
+                    android:textSize="16.7sp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/edt_customer_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/sf_pro_display_regular"
+                        android:hint="Customer Name"
+                        android:inputType="textCapWords"
+                        android:textColor="@color/grey_828990"
+                        android:textSize="15sp" />
+
+
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16.7dp"
+                    android:layout_marginTop="23.3dp"
+                    android:fontFamily="@font/sf_pro_display_semibold"
+                    android:includeFontPadding="false"
+                    android:text="Customer Mobile"
+                    android:textColor="@color/black_25303c"
+                    android:textSize="16.7sp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+
+                        android:id="@+id/edt_customer_mobile"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/sf_pro_display_regular"
+                        android:hint="Customer Contact"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:textColor="@color/grey_828990"
+                        android:textSize="15sp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_alignBottom="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16.2dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:backgroundTint="@color/appcolor"
+                        android:id="@+id/liTable"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_gray_boxprofile"
+                        android:orientation="horizontal"
+                        android:paddingLeft="17dp"
+                        android:paddingTop="18dp"
+                        android:paddingRight="13dp"
+                        android:layout_marginRight="7.5dp"
+                        android:onClick="@{()->fragment.onTableClick()}"
+                        android:paddingBottom="18dp">
+
+                        <TextView
+                            android:id="@+id/tvTable"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/sf_pro_display_semibold"
+                            android:text="On Table"
+                            android:onClick="@{()->fragment.onTableClick()}"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/img_delivery"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:onClick="@{()->fragment.onTableClick()}"
+                            android:src="@{isTable?@drawable/ic_radio:@drawable/circle_radio}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:backgroundTint="@color/green"
+                        android:id="@+id/liPacking"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_gray_boxprofile"
+                        android:orientation="horizontal"
+                        android:paddingLeft="17dp"
+                        android:paddingTop="18dp"
+                        android:paddingRight="13dp"
+                        android:layout_marginLeft="7.5dp"
+                        android:onClick="@{()->fragment.onPackingClick()}"
+                        android:paddingBottom="18dp">
+
+                        <TextView
+                            android:id="@+id/tvPacking"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/sf_pro_display_semibold"
+                            android:text="Packing"
+                            android:textColor="@color/white"
+                            android:onClick="@{()->fragment.onPackingClick()}"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/img_takeaway"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:onClick="@{()->fragment.onPackingClick()}"
+                            android:src="@{isTable?@drawable/circle_radio:@drawable/ic_radio}" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/checkout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mainLayout"
+                    android:background="@drawable/rectangle_green"
+                    android:fontFamily="@font/sf_pro_display_bold"
+                    android:text="Take Order"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

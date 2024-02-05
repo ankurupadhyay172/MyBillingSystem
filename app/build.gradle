@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -34,6 +35,23 @@ android {
     dataBinding{
         enabled=true
     }
+
+    def BASE_URL = "BASE_URL"
+    flavorDimensions "default"
+
+    productFlavors{
+        staging{
+            applicationId "com.billing.mybilling"
+            dimension "default"
+            buildConfigField 'String',BASE_URL , STAGING_API_URL
+        }
+
+        production{
+            applicationId "com.billing.mybilling"
+            dimension "default"
+            buildConfigField 'String', BASE_URL, API_URL
+        }
+    }
 }
 
 dependencies {
@@ -57,6 +75,26 @@ dependencies {
     //navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-alpha01"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.14'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+
+    //implement roomdb
+    implementation("androidx.room:room-runtime:2.4.2")
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    kapt("androidx.room:room-compiler:2.4.2")
+    implementation 'androidx.room:room-ktx:2.4.2'
+    implementation 'androidx.room:room-paging:2.4.2'
+
+    implementation 'androidx.paging:paging-runtime:3.1.1'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
 
 }
 kapt{

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/appcolor"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:paddingBottom="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginRight="-120dp"
+                android:layout_height="220dp"
+
+                />
+
+            <ImageView
+                android:src="@drawable/appicon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12.7dp"
+                android:fontFamily="@font/sf_pro_display_bold"
+                android:text="My Billing"
+                android:textColor="@color/light_white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25.8dp"
+                android:fontFamily="@font/sf_pro_display_bold"
+                android:text="LOGIN WITH"
+                android:visibility="gone"
+                android:textColor="@color/light_white"
+                android:textSize="15sp" />
+
+
+            <LinearLayout
+                android:id="@+id/li_mobile"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:fontFamily="@font/roboto_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="Mobile Number"
+                    android:layout_marginTop="38.7dp"
+                    android:layout_marginRight="14.7dp"
+                    android:layout_marginLeft="14.7dp"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/mobileNo"
+                    android:fontFamily="@font/roboto_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/phone_no_ract"
+                    android:hint="Enter Mobile"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:layout_marginRight="14.7dp"
+                    android:layout_marginLeft="14.7dp"
+                    android:paddingBottom="14.7dp"
+                    android:paddingLeft="11.7dp"
+                    android:paddingTop="14.7dp"
+                    android:textColor="#8d8d8d"
+                    android:textSize="15sp" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.9dp"
+                    android:layout_marginLeft="16.7dp"
+                    android:layout_marginRight="16.7dp"
+                    android:background="@color/viewLine" />
+
+                <LinearLayout
+                    android:id="@+id/liPrivacy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16.7sp"
+                        android:text="By Continuing,I agree to the "
+                        android:gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/sfuidisplay_bold"
+                        android:textColor="@color/sub_txt"/>
+
+                    <TextView
+                        android:layout_below="@+id/tvprivacyPolicy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16.7sp"
+                        android:text="Privacy Policy "
+                        android:gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/sfuidisplay_bold"
+                        android:textColor="@color/purple_200"/>
+
+                </LinearLayout>
+                <ProgressBar
+                    android:visibility="gone"
+                    android:id="@+id/progressbar"
+                    android:indeterminateTint="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/error"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="this is error"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16.7dp"
+                    android:layout_marginTop="38.6dp"
+                    android:layout_marginRight="16.7dp"
+                    android:background="@drawable/rectangle_white"
+                    android:fontFamily="@font/sf_pro_display_bold"
+                    android:text="Submit"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/li_otp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16.7dp"
+                    android:layout_marginTop="38.7dp"
+                    android:layout_marginRight="16.7dp"
+                    android:textColorHint="@color/white_opecity"
+                    app:hintTextAppearance="@style/BlueTextInputLayout">
+
+                    <EditText
+                        android:id="@+id/otp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/sf_pro_display_regular"
+                        android:hint="Enter Otp"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="5.7dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.9dp"
+                    android:layout_marginLeft="16.7dp"
+                    android:layout_marginRight="16.7dp"
+                    android:background="@color/viewLine" />
+
+                <ProgressBar
+                    android:visibility="gone"
+                    android:id="@+id/progressbar2"
+                    android:indeterminateTint="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/error2"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="this is error"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/submit_otp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16.7dp"
+                    android:layout_marginTop="38.6dp"
+                    android:layout_marginRight="16.7dp"
+                    android:background="@drawable/rectangle_white"
+                    android:fontFamily="@font/sf_pro_display_bold"
+                    android:text="Submit Otp"
+                    android:textColor="@color/red"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

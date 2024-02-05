@@ -21,6 +21,8 @@ abstract class BaseListAdapter<T,V:ViewDataBinding>(diffCallback:DiffUtil.ItemCa
 
     abstract override fun createBinding(parent: ViewGroup): V
 
+    override fun bind(binding: V, item: T?, position: Int) {
 
+    }
 
 }

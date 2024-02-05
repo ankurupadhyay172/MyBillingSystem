@@ -10,4 +10,36 @@
 
     <color name="red_ff577f">#ff577f</color>
     <color name="blue">#ef3024</color>
+    <color name="txt_color">#313131</color>
+    <color name="green">#2ac17e</color>
+    <color name="black_25303c">#25303c</color>
+    <color name="grey_828990">#828990</color>
+    <color name="smoke_gray">#a2a2a2</color>
+    <color name="jffbg">#CB0911</color>
+    <color name="transparent">#00000000</color>
+    <color name="dark_green">#50a141</color>
+    <color name="border_d1d1d1">#d1d1d1</color>
+    <color name="jffcolor">#CB0911</color>
+    <color name="title_color_22282f">#22282f</color>
+    <color name="silver_909397">#909397</color>
+    <color name="bg_fafafa">#fafafa</color>
+    <color name="myblue">#255bac</color>
+
+    <color name="black_bg">#21272E</color>
+    <color name="light_white">#fff8f9</color>
+    <color name="white_opecity">#dfdede</color>
+    <color name="viewLine">#50acacac</color>
+    <color name="red">#f22c2c</color>
+    <color name="filter_back">#E4E4E4</color>
+    <color name="grey">#9c99a5</color>
+    <color name="subtxt_gray">#9fa3a8</color>
+
+    <color name="bgcolor">#114107</color>
+    <color name="sub_txt">#8f909e</color>
+
+    <color name="appcolor">#527BD9</color>
+    <color name="root_gray">#E7E6E9</color>
+    <color name="root_green">#008F6A</color>
+    <color name="root_yellow">#F6D522</color>
+
 </resources>

@@ -1,19 +1,104 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/circle.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/circle_green.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/circle_radio.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/circle_red.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/dotted_line_rect_green.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/gradient_bg.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/gradient_btn.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/gray_rect.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_add.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_add2.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_add__1_.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_back.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_background_capsule_black.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_background_capsule_white_round_8.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_barcode.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_baseline_arrow_left_24.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_baseline_arrow_right_24.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_baseline_mic_24.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_burgur.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_calendar.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_call.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_check_circle.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_cross.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_down_arrow_in_circular_button.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_empty_cart.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_minus.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_more.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_notification_bell.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_office_building.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_pencil.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_radio.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_star.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_ticket.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_up_arrow_in_circular_button.xml" value="0.111" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_veg.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/ic_wallet.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/login_signupbtn_ract.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/phone_no_ract.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rect_blue_botom_cure.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rect_blue_cornor.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rect_gray_cure_border.xml" value="0.111" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rect_pink_border2.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rect_pink_dark.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rect_pink_leftcure.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rect_pink_rightcure.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rect_red.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rect_school.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rect_white_cure.xml" value="0.114" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rectangle_gray_border.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rectangle_gray_boxprofile.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rectangle_green.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rectangle_multi_gradient.xml" value="0.111" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rectangle_silver_border.xml" value="0.111" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/drawable/rectangle_white.xml" value="0.114" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/activity_main.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/empty_screen.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_about_us.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_add_category_form.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_add_discount_form.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_add_order.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_add_product_form.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_add_staff_form.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_add_variant_form.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_admin_home.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_category.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_delivered_orders.xml" value="0.16770833333333332" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_home.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_login.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_pending_orders.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_pending_orders_details.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_product_list.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_serach_product.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_signup.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_splash_screen.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_staff_list.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/fragment_view_category_list.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/item_cart.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/item_category.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/item_completed_orders.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/item_pending_orders.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/item_products.xml" value="0.16770833333333332" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/item_search_products.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/item_user.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/item_variants.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/item_view_category.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/layout_cart.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/layout_loading.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/new_info_second_layout.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/spin_view.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/spinner_layout.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/toolbarsearch.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/layout/warning_dialog.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyBilling/app/src/main/res/menu/main_menu.xml" value="0.16770833333333332" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

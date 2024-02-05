@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">My Billing</string>
+    <string name="rupee">₹</string>
+    
+    <string-array name="filter_options">
+        <item>day by day</item>
+        <item>month by month</item>
+        <item>year by year</item>
+    </string-array>
+    <string name="options">Select an action</string>
+    <string-array name="option_del">
+        <item >Delete </item>
+    </string-array>
+
+    <string-array name="options">
+        <item >Edit</item>
+        <item >Delete </item>
+    </string-array>
+
+    <string name="something_went_wrong_error">Something Went Wrong</string>
+    <string name="error_network" translatable="false">A network error has occurred.Please try again.</string>
+    <string name="title_retry">Retry</string>
+    <string name="error_no_internet_connection" translatable="false">No internet found. Check your connection or try again.</string>
+    <string name="error_server" translatable="false">A server error has occurred.Please try again.</string>
+    <string name="error_unknown" translatable="false">An unknown error has occurred.Please try again.</string>
+    <string name="no_email_found_error" translatable="false">You do not have associated email address with your facebook account, please choose another option to login.</string>
+    <string name="warning_complete_order">Do you really want to complete this order ?</string>
+    <string name="receive_online">Receive Online</string>
+    <string name="receive_cash">Receive Cash</string>
 </resources>

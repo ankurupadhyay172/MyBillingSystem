@@ -3,11 +3,243 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/splashScreenFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.billing.mybilling.presentation.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_pendingOrders"
+            app:destination="@id/pendingOrders" />
+        <action
+            android:id="@+id/action_homeFragment_to_deliveredOrdersFragment"
+            app:destination="@id/deliveredOrdersFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_viewCategoryListFragment"
+            app:destination="@id/viewCategoryListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_staffListFragment"
+            app:destination="@id/staffListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_pendingOrdersDetailsFragment"
+            app:destination="@id/pendingOrdersDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_addOrderFragment2"
+            app:destination="@id/addOrderFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.billing.mybilling.presentation.CategoryFragment"
+        android:label="CategoryFragment"
+        tools:layout="@layout/fragment_category">
+        <action
+            android:id="@+id/action_categoryFragment_to_productListFragment"
+            app:destination="@id/productListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.billing.mybilling.presentation.CartFragment"
+        android:label="CartFragment"
+        tools:layout="@layout/layout_cart"/>
+    <fragment
+        android:id="@+id/pendingOrders"
+        android:name="com.billing.mybilling.presentation.PendingOrders"
+        android:label="PendingOrders"
+        tools:layout="@layout/fragment_pending_orders">
+        <action
+            android:id="@+id/action_pendingOrders_to_addOrderFragment2"
+            app:destination="@id/addOrderFragment2" />
+        <action
+            android:id="@+id/action_pendingOrders_to_pendingOrdersDetailsFragment"
+            app:destination="@id/pendingOrdersDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productListFragment"
+        android:name="com.billing.mybilling.presentation.ProductListFragment"
+        android:label="Products"
+        tools:layout="@layout/fragment_product_list">
+        <action
+            android:id="@+id/action_productListFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_productListFragment_to_viewVariantsListFragment"
+            app:destination="@id/viewVariantsListFragment" />
+        <action
+            android:id="@+id/action_productListFragment_to_addProductFragment"
+            app:destination="@id/addProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchProductFragment"
+        android:name="com.billing.mybilling.presentation.SearchProductFragment"
+        android:label="Products "
+        tools:layout="@layout/fragment_serach_product"/>
+    <fragment
+        android:id="@+id/addOrderFragment2"
+        android:name="com.billing.mybilling.presentation.AddOrderFragment"
+        android:label="Manage Order"
+        tools:layout="@layout/fragment_add_order"/>
+    <fragment
+        android:id="@+id/pendingOrdersDetailsFragment"
+        android:name="com.billing.mybilling.presentation.PendingOrdersDetailsFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_pending_orders_details">
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_pendingOrdersDetailsFragment_to_searchProductFragment"
+            app:destination="@id/searchProductFragment" />
+        <action
+            android:id="@+id/action_pendingOrdersDetailsFragment_to_addDiscountFormFragment"
+            app:destination="@id/addDiscountFormFragment" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="NA" />
+    </fragment>
+    <fragment
+        android:id="@+id/addDiscountFormFragment"
+        android:name="com.billing.mybilling.presentation.AddDiscountFormFragment"
+        android:label="Manage Discount"
+        tools:layout="@layout/fragment_add_discount_form">
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/deliveredOrdersFragment"
+        android:name="com.billing.mybilling.presentation.DeliveredOrdersFragment"
+        android:label="DeliveredOrdersFragment"
+        tools:layout="@layout/fragment_delivered_orders"/>
+    <fragment
+        android:id="@+id/viewCategoryListFragment"
+        android:name="com.billing.mybilling.presentation.admin.ViewCategoryListFragment"
+        android:label="Categories"
+        tools:layout="@layout/fragment_view_category_list">
+        <action
+            android:id="@+id/action_viewCategoryListFragment_to_addCategoryFragment"
+            app:destination="@id/addCategoryFragment" />
+        <action
+            android:id="@+id/action_viewCategoryListFragment_to_productListFragment"
+            app:destination="@id/productListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCategoryFragment"
+        android:name="com.billing.mybilling.presentation.admin.AddCategoryFragment"
+        android:label="Manage Category"
+        tools:layout="@layout/fragment_add_discount_form">
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="na" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewVariantsListFragment"
+        android:name="com.billing.mybilling.presentation.admin.ViewVariantsListFragment"
+        android:label="Variants"
+        tools:layout="@layout/fragment_view_category_list">
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_viewVariantsListFragment_to_addProductVariantFragment"
+            app:destination="@id/addProductVariantFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.billing.mybilling.presentation.admin.AddProductFragment"
+        android:label="Manage Product"
+        tools:layout="@layout/fragment_add_product_form">
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="model"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="na" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductVariantFragment"
+        android:name="com.billing.mybilling.presentation.admin.AddProductVariantFragment"
+        android:label="Manage Product Variant"
+        tools:layout="@layout/fragment_add_variant_form">
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="model"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="na" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.billing.mybilling.presentation.SplashScreenFragment"
+        android:label="SplashScreenFragment"
+        tools:layout="@layout/fragment_splash_screen">
+        <action
+            android:id="@+id/action_splashScreenFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_pendingOrders"
+            app:destination="@id/pendingOrders"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.billing.mybilling.presentation.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/staffListFragment"
+        android:name="com.billing.mybilling.presentation.login.StaffListFragment"
+        android:label="StaffListFragment"
+        tools:layout="@layout/fragment_staff_list">
+        <action
+            android:id="@+id/action_staffListFragment_to_addStaffFormFragment"
+            app:destination="@id/addStaffFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addStaffFormFragment"
+        android:name="com.billing.mybilling.presentation.login.AddStaffFormFragment"
+        tools:layout="@layout/fragment_add_staff_form"
+        android:label="Add Staff" />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.billing.mybilling.presentation.login.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_signup"/>
 </navigation>
