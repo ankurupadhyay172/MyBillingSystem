@@ -16,16 +16,20 @@ import com.billing.mybilling.databinding.FragmentAddCategoryFormBinding
 import com.billing.mybilling.databinding.FragmentAddDiscountFormBinding
 import com.billing.mybilling.databinding.FragmentAddProductFormBinding
 import com.billing.mybilling.presentation.HomeViewModel
+import com.billing.mybilling.session.SessionManager
 import com.billing.mybilling.utils.SelectedAction
 import com.billing.mybilling.utils.editType
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AddProductFragment: BaseFragment<FragmentAddProductFormBinding, HomeViewModel>() {
     val homeViewModel:HomeViewModel by viewModels()
     val args:AddProductFragmentArgs by navArgs()
     var model:Products? = null
+    @Inject
+    lateinit var sessionManager: SessionManager
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getViewDataBinding().title = "Add Product"
@@ -41,7 +45,7 @@ class AddProductFragment: BaseFragment<FragmentAddProductFormBinding, HomeViewMo
             }else{
                 showLoading(true)
                 if (model!=null){
-                    homeViewModel.addProduct(SelectedAction.UPDATE.type,AddProductRequestModel(model?.pid,getViewDataBinding().edtTitle.text.toString(),0)).observe(viewLifecycleOwner){
+                    homeViewModel.addProduct(SelectedAction.UPDATE.type,AddProductRequestModel(model?.pid,getViewDataBinding().edtTitle.text.toString(),sessionManager.getUser()?.business_id,0)).observe(viewLifecycleOwner){
                         it.getValueOrNull()?.let {
                             if (it.status==1){
                                 findNavController().popBackStack()
@@ -51,7 +55,7 @@ class AddProductFragment: BaseFragment<FragmentAddProductFormBinding, HomeViewMo
                         }
                     }
                 }else{
-                    homeViewModel.addProduct(SelectedAction.ADD.type,AddProductRequestModel(args.id,getViewDataBinding().edtTitle.text.toString(),0)).observe(viewLifecycleOwner){
+                    homeViewModel.addProduct(SelectedAction.ADD.type,AddProductRequestModel(args.id,getViewDataBinding().edtTitle.text.toString(),sessionManager.getUser()?.business_id,0)).observe(viewLifecycleOwner){
                         it.getValueOrNull()?.let {
                             showToast("${it.result}")
                             findNavController().popBackStack()

@@ -55,6 +55,7 @@ class ProductsAdapter @Inject constructor(): BaseListAdapter<Products,ItemSearch
             if (binding.counter==0){
                 open?.invoke(item,SelectedAction.DELETE.type)
             }else{
+
                 open?.invoke(item,SelectedAction.UPDATE.type)
             }
 

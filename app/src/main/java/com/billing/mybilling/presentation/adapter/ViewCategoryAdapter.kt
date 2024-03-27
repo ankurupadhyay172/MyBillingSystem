@@ -8,6 +8,7 @@ import com.billing.mybilling.R
 import com.billing.mybilling.base.BaseListAdapter
 import com.billing.mybilling.data.model.response.Category
 import com.billing.mybilling.databinding.ItemViewCategoryBinding
+import com.billing.mybilling.utils.setImage
 import javax.inject.Inject
 
 class ViewCategoryAdapter @Inject constructor(): BaseListAdapter<Category,ItemViewCategoryBinding>(DiffCallback()) {
@@ -34,7 +35,7 @@ class ViewCategoryAdapter @Inject constructor(): BaseListAdapter<Category,ItemVi
        binding.liOrder.setOnClickListener {
            open?.invoke(item?.category_id,item)
        }
-
+        binding.userImage.setImage(item?.image)
        binding.liOrder.setOnLongClickListener {
            option?.invoke(item)
            return@setOnLongClickListener true

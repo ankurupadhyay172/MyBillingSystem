@@ -8,6 +8,7 @@ import com.billing.mybilling.R
 import com.billing.mybilling.base.BaseListAdapter
 import com.billing.mybilling.data.model.response.Category
 import com.billing.mybilling.databinding.ItemCategoryBinding
+import com.billing.mybilling.utils.setImage
 import javax.inject.Inject
 
 class CategoryAdapter @Inject constructor(): BaseListAdapter<Category,ItemCategoryBinding>(DiffCallback()) {
@@ -32,6 +33,7 @@ class CategoryAdapter @Inject constructor(): BaseListAdapter<Category,ItemCatego
 
     override fun bind(binding: ItemCategoryBinding, item: Category?) {
         binding.name = item?.name
+        binding.ivMain.setImage(item?.image)
         binding.liCategory.setOnClickListener {
             open?.invoke(item?.category_id)
         }

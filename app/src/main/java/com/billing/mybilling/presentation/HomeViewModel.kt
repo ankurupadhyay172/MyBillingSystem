@@ -1,6 +1,8 @@
 package com.billing.mybilling.presentation
 
+import android.graphics.Bitmap
 import android.icu.text.SimpleDateFormat
+import android.util.Base64
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
@@ -16,6 +18,7 @@ import com.billing.mybilling.data.repository.ProductsPagingSource
 import com.billing.mybilling.database.DatabaseManager
 import com.billing.mybilling.database.TempCart
 import com.billing.mybilling.utils.AnalyticsType
+import com.billing.mybilling.utils.LoadingState
 import com.billing.mybilling.utils.toLoadingState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -25,6 +28,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
+import java.io.ByteArrayOutputStream
 import java.util.*
 import javax.inject.Inject
 
@@ -36,6 +40,7 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
     val instance: Calendar = Calendar.getInstance()
     var filterValue = MutableLiveData(AnalyticsType.DayByDay.type)
     var selectedUser:Users? = null
+    val loadState = MutableLiveData<LoadingState>(LoadingState.Loading)
 
     var pendingOrders:PendingOrders? = null
     val isPaymentOnline = MutableLiveData(pendingOrders?.payment_type!=1)
@@ -87,13 +92,16 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
     fun getCategoriesList(commonRequestModel: CommonRequestModel) = liveData(Dispatchers.IO){
         homeRepository.getCategories(commonRequestModel).toLoadingState().catch {  }.collect{
-
             emit(it)
         }
     }
 
-    fun addCategory(type: String,commonRequestModel: CommonRequestModel) = liveData(Dispatchers.IO) {
-        homeRepository.addCategory(type,commonRequestModel).toLoadingState().catch {  }.collect{
+    suspend fun getCategoriesListFromDatabase(commonRequestModel: CommonRequestModel){
+        homeRepository.getCategoriesFromDataBase(commonRequestModel)
+    }
+
+    fun addCategory(type: String,addCategoryRequestModel: AddCategoryRequestModel) = liveData(Dispatchers.IO) {
+        homeRepository.addCategory(type,addCategoryRequestModel).toLoadingState().catch {  }.collect{
             emit(it)
         }
     }
@@ -144,8 +152,8 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
         homeRepository.getCompletedOrders(commonRequestModel)
     }
 
-    fun updatePendingOrder(pendingOrders: PendingOrders?) = liveData(Dispatchers.IO) {
-        homeRepository.updatePendingOrder(pendingOrders).toLoadingState().catch {  }.collect{
+    fun updatePendingOrder(type: String,pendingOrders: PendingOrders?) = liveData(Dispatchers.IO) {
+        homeRepository.updatePendingOrder(type,pendingOrders).toLoadingState().catch {  }.collect{
             emit(it)
         }
     }
@@ -176,6 +184,16 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
     fun getSearchProduct(searchRequestModel: SearchRequestModel) = liveData(Dispatchers.IO) {
         homeRepository.getSearchProducts(searchRequestModel).toLoadingState().catch {  }.collect{
+            emit(it)
+        }
+    }
+
+
+    fun getProductByCategory(searchRequestModel: SearchRequestModel) = liveData(Dispatchers.IO) {
+        homeRepository.getProductsByCategory(searchRequestModel).toLoadingState().catch {
+            loadState.postValue(LoadingState.Error(it))
+        }.collect{
+
             emit(it)
         }
     }
@@ -222,6 +240,13 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
         analyticsType.value = instance.time
 
+    }
+
+    fun BitMapToString(bitmap: Bitmap): String? {
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 10, baos)
+        val b: ByteArray = baos.toByteArray()
+        return Base64.encodeToString(b, Base64.DEFAULT)
     }
 
 }

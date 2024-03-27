@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.billing.mybilling.data.model.response.Products" />
+
+        <variable
+            name="model"
+            type="Products" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Name:Aaloo Gobhi"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/sf_pro_display_semibold"
+            android:maxLines="1"
+            android:text="@{`Name : `+model.product_name}"
+            android:textColor="@color/green"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Price:₹ 60"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/sf_pro_display_semibold"
+            android:text="@{`Price : ₹`+model.price}"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/title"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <TextView
+            android:id="@+id/tvNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:textColor="@color/txt_color"
+            android:textSize="14sp"
+            tools:text="Quantity:1"
+            app:layout_constraintStart_toStartOf="@+id/title"
+            app:layout_constraintTop_toBottomOf="@+id/price" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -9,39 +9,27 @@
         type="String" />
     </data>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
+
         android:orientation="vertical">
-
-
-        <ScrollView
-
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never"
-            android:scrollbars="none">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16.7dp"
-                android:layout_marginEnd="16.7dp"
-                android:clipToPadding="false"
-                android:orientation="vertical"
-                android:paddingBottom="23.3dp">
 
 
 
 
                 <TextView
+                    android:id="@+id/tvTitle"
                     android:layout_marginTop="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/sf_pro_display_regular"
                     android:includeFontPadding="false"
                     android:text="@{title}"
+                    android:layout_margin="@dimen/_18sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     android:textColor="@color/silver_909397"
                     android:textSize="14sp" />
 
@@ -50,6 +38,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_margin="@dimen/_18sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:background="@drawable/rectangle_silver_border"
                     android:fontFamily="@font/sf_pro_display_medium"
                     android:hint="@{`Enter`+title}"
@@ -60,22 +52,18 @@
                     android:textColorHint="@color/silver_909397"
                     android:textSize="15sp" />
 
-                <CheckBox
-                    android:id="@+id/isNonVeg"
 
-                    android:text="NonVeg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
 
-            </LinearLayout>
 
-        </ScrollView>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/submit"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/edtTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="33.3dp"
             android:layout_marginStart="16.7dp"
             android:layout_marginEnd="16.7dp"
@@ -83,9 +71,10 @@
             android:fontFamily="@font/sf_pro_display_medium"
             android:includeFontPadding="false"
             android:text="Submit"
+            android:layout_marginTop="@dimen/_10sdp"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="15sp" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

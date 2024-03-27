@@ -30,11 +30,11 @@ interface MyDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addDeliveredOrder(orders: List<PendingOrders>)
 
-    @Query("select * from `pendingorders` where strftime('%d',datetime(timeLong/1000, 'unixepoch'))= strftime('%d',datetime(:today/1000, 'unixepoch')) and order_status=:status order by timeLong DESC")
-    fun getAllDeliveredOrdersByDate(status:Int,today: Date):LiveData<List<PendingOrders>>
+    @Query("select * from `pendingorders` where strftime('%d',datetime(timeLong/1000, 'unixepoch'))= strftime('%d',datetime(:today/1000, 'unixepoch'))  order by timeLong DESC")
+    fun getAllDeliveredOrdersByDate(today: Date):LiveData<List<PendingOrders>>
 
-    @Query("SELECT * FROM `pendingorders` where timeLong between :start and :end and order_status=:status order by timestamp DESC")
-    fun getAllOrdersByMonth(status: Int,start: Long,end: Long):LiveData<List<PendingOrders>>
+    @Query("SELECT * FROM `pendingorders` where timeLong between :start and :end  order by timestamp DESC")
+    fun getAllOrdersByMonth(start: Long,end: Long):LiveData<List<PendingOrders>>
 
     @Query("SELECT * FROM `pendingorders` WHERE datetime(datetime(timeLong/1000, 'unixepoch'),'start of year') = datetime(:today/1000,'unixepoch','start of year') order by timestamp DESC")
     fun getAllOrdersByYear(today:Date):LiveData<List<PendingOrders>>

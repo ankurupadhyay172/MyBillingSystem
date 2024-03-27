@@ -6,6 +6,7 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.billing.mybilling.BR
 import com.billing.mybilling.R
@@ -16,17 +17,20 @@ import com.billing.mybilling.databinding.FragmentSplashScreenBinding
 import com.billing.mybilling.session.SessionManager
 import com.billing.mybilling.utils.UserType
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class SplashScreenFragment:BaseFragment<FragmentSplashScreenBinding,HomeViewModel>() {
-    private val homeViewModel:HomeViewModel by viewModels()
+    val homeViewModel:HomeViewModel by viewModels()
     @Inject
     lateinit var sessionManager: SessionManager
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Handler(Looper.myLooper()!!).postDelayed({
-            navigationToMain()
+            viewLifecycleOwner.lifecycleScope.launch {
+                navigationToMain()
+            }
 
         },2000)
     }
@@ -36,6 +40,7 @@ class SplashScreenFragment:BaseFragment<FragmentSplashScreenBinding,HomeViewMode
             findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToLoginFragment())
         }else{
             sessionManager.getUser()?.let {
+                showToast("${it.user_type_id}")
                 when(it.user_type_id){
                     UserType.ADMIN.id -> findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToHomeFragment())
                     UserType.STAFF.id-> findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToPendingOrders())

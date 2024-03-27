@@ -8,9 +8,14 @@ import androidx.navigation.fragment.navArgs
 import com.billing.mybilling.BR
 import com.billing.mybilling.R
 import com.billing.mybilling.base.BaseFragment
+import com.billing.mybilling.data.model.response.PendingOrders
 import com.billing.mybilling.databinding.FragmentAddDiscountFormBinding
+import com.billing.mybilling.utils.SelectedAction
 import com.billing.mybilling.utils.editType
+import com.google.gson.Gson
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddDiscountFormFragment: BaseFragment<FragmentAddDiscountFormBinding,HomeViewModel>() {
     val homeViewModel:HomeViewModel by activityViewModels()
     val args:AddDiscountFormFragmentArgs by navArgs()
@@ -32,8 +37,8 @@ class AddDiscountFormFragment: BaseFragment<FragmentAddDiscountFormBinding,HomeV
                     editType.DISCOUNT.type -> homeViewModel.pendingOrders?.customer_discount = discount
                     editType.DELIVERY_CHARGES.type -> homeViewModel.pendingOrders?.delivery_charges = discount
                 }
-
-                homeViewModel.updatePendingOrder(homeViewModel.pendingOrders).observe(viewLifecycleOwner){
+                homeViewModel.pendingOrders?.customer_discount = discount
+                homeViewModel.updatePendingOrder(SelectedAction.UPDATE.type,homeViewModel.pendingOrders).observe(viewLifecycleOwner){
                     it?.getValueOrNull()?.let {
                         findNavController().popBackStack()
                     }

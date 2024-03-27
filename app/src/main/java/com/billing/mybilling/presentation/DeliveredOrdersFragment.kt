@@ -1,6 +1,5 @@
 package com.billing.mybilling.presentation
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -12,6 +11,7 @@ import com.billing.mybilling.BR
 import com.billing.mybilling.R
 import com.billing.mybilling.base.BaseFragment
 import com.billing.mybilling.data.model.request.CommonRequestModel
+import com.billing.mybilling.data.model.response.PendingOrders
 import com.billing.mybilling.database.DatabaseManager
 import com.billing.mybilling.databinding.FragmentDeliveredOrdersBinding
 import com.billing.mybilling.presentation.adapter.CompletedOrdersAdapter
@@ -20,6 +20,7 @@ import com.billing.mybilling.utils.AnalyticsType
 import com.billing.mybilling.utils.OrderStatus
 import com.billing.mybilling.utils.PaymentType
 import com.billing.mybilling.utils.setPrice
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.*
@@ -55,7 +56,11 @@ class DeliveredOrdersFragment : BaseFragment<FragmentDeliveredOrdersBinding, Hom
 
         setFilter()
         handleIncrement()
+        adapter.open = {id,item->
+//            findNavController().navigate(DeliveredOrdersFragmentDirections.actionDeliveredOrdersFragmentToOrderProductDetailFragment(Gson().toJson(item)))
 
+              findNavController().navigate(DeliveredOrdersFragmentDirections.actionDeliveredOrdersFragmentToOrderDetailFragment(Gson().toJson(item)))
+        }
 
 //        homeViewModel.getCompletedOrders(CommonRequestModel(OrderStatus.DELIVERED.status.toString())).observe(viewLifecycleOwner){
 //            it.getValueOrNull()?.let {
@@ -97,9 +102,11 @@ class DeliveredOrdersFragment : BaseFragment<FragmentDeliveredOrdersBinding, Hom
 
             getViewDataBinding().rightArrow.visibility = if (it.date == c.date && it.month == c.month && it.year == c.year) View.GONE else View.VISIBLE
 
-            filterFunction(OrderStatus.DELIVERED.status, it).observe(viewLifecycleOwner) {
+            filterFunction( it).observe(viewLifecycleOwner) {
                 getViewDataBinding().isEmpty = it.isEmpty()
                 adapter.submitList(it)
+
+
                 getViewDataBinding().apply {
                     progressBar.visibility = View.GONE
                     totalAmount.text = it.sumOf { it.getTotalAmount() }.toString()

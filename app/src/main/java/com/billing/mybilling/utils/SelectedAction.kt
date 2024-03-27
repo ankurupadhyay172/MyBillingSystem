@@ -3,12 +3,13 @@ package com.billing.mybilling.utils
 enum class SelectedAction(val type:String){
     ADD("add"),
     UPDATE("update"),
-    DELETE("delete")
+    DELETE("delete"),
+    UPDATE_STATUS("update_status")
 }
 
 enum class OrderType(val type: String){
-    TABLE("table"),
-    PACKING("packing")
+    TABLE("1"),
+    PACKING("2")
 }
 
 enum class editType(val type: String){
@@ -18,8 +19,10 @@ enum class editType(val type: String){
 
 enum class OrderStatus(val status:Int){
     PENDING(0),
-    DELIVERED(1),
-    FAILED(2)
+    COOKING(1),
+    READY_TO_DELIVER(2),
+    DELIVERED(3),
+    FAILED(4)
 }
 
 enum class PaymentType(val type:Int){
@@ -42,3 +45,22 @@ enum class UserStatus(val status:Int){
     InACTIVE(2)
 }
 
+fun String.setOrderOn(): String {
+    return when (this) {
+        OrderType.PACKING.type -> "Packing"
+        OrderType.TABLE.type->"Table"
+        else -> "Table"
+    }
+}
+
+
+fun Int.setOrderStatus(): String {
+    return when (this) {
+        OrderStatus.PENDING.status -> "Pending"
+        OrderStatus.COOKING.status -> "Cooking"
+        OrderStatus.READY_TO_DELIVER.status -> "Ready to Deliver"
+        OrderStatus.DELIVERED.status -> "Delivered"
+        OrderStatus.FAILED.status -> "Failed"
+        else -> "Pending"
+    }
+}

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/liOrders"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_bg"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="10dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_item_count"
+            android:src="@drawable/rectangle_left_cure_blue" />
+
+
+
+            <TextView
+                android:id="@+id/txt_orderNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_display_semibold"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@+id/img_bg"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Customer Name:Raman"
+                />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/_20sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_orderNo"
+            app:layout_constraintStart_toEndOf="@+id/img_bg"/>
+
+            <TextView
+                android:id="@+id/txt_date_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/subtxt_gray"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@+id/txt_orderNo"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerview"/>
+
+            <TextView
+                android:id="@+id/orderType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/bluePrimary"
+                android:textSize="13sp"
+                app:layout_constraintTop_toBottomOf="@+id/txt_date_time"
+                app:layout_constraintStart_toStartOf="@+id/txt_orderNo"
+                />
+
+
+                <TextView
+                    android:id="@+id/txt_order_status"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/subtxt_gray"
+                    android:textSize="13sp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    app:layout_constraintTop_toBottomOf="@+id/orderType"
+                    app:layout_constraintStart_toStartOf="@+id/txt_orderNo"/>
+
+                <TextView
+                    android:id="@+id/txt_item_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/subtxt_gray"
+                    android:textSize="13sp"
+                    android:layout_marginRight="9dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    app:layout_constraintTop_toTopOf="@+id/txt_order_status"
+                    app:layout_constraintEnd_toStartOf="@+id/txt_price"/>
+
+                <TextView
+                    android:id="@+id/txt_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green"
+                    android:textSize="14sp"
+                    android:layout_marginRight="@dimen/_18sdp"
+                    android:fontFamily="@font/sf_pro_display_semibold"
+                    app:layout_constraintTop_toTopOf="@+id/txt_item_count"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

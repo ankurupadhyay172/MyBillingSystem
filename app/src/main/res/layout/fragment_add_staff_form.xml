@@ -158,6 +158,7 @@
 
 
                 <TextView
+                    android:visibility="gone"
                     android:layout_marginTop="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -168,6 +169,7 @@
                     android:textSize="14sp" />
 
                 <EditText
+                    android:visibility="gone"
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -182,26 +184,27 @@
                     android:textColorHint="@color/silver_909397"
                     android:textSize="15sp" />
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_22sdp"
+                    android:layout_marginStart="16.7dp"
+                    android:layout_marginEnd="16.7dp"
+                    android:layout_marginBottom="33.3dp"
+                    android:background="@drawable/rectangle_multi_gradient"
+                    android:fontFamily="@font/sf_pro_display_medium"
+                    android:includeFontPadding="false"
+                    android:text="Submit"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
         </ScrollView>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="16.7dp"
-            android:layout_marginEnd="16.7dp"
-            android:layout_marginBottom="33.3dp"
-            android:background="@drawable/rectangle_multi_gradient"
-            android:fontFamily="@font/sf_pro_display_medium"
-            android:includeFontPadding="false"
-            android:text="Submit"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
+
 
     </RelativeLayout>
 </layout>

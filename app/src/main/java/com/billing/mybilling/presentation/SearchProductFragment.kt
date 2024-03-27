@@ -12,6 +12,7 @@ import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.navArgs
 import com.billing.mybilling.BR
 import com.billing.mybilling.R
 import com.billing.mybilling.base.BaseFragment
@@ -33,6 +34,7 @@ class SearchProductFragment: BaseFragment<FragmentSerachProductBinding,HomeViewM
     lateinit var edtSearch:EditText
     @Inject
     lateinit var sessionManager: SessionManager
+    val args:SearchProductFragmentArgs by navArgs()
     val speechLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){result->
         if (result.resultCode == RESULT_OK) {
             val res: ArrayList<String> =
@@ -67,7 +69,7 @@ class SearchProductFragment: BaseFragment<FragmentSerachProductBinding,HomeViewM
 
         edtSearch = view.findViewById(R.id.input)
         edtSearch.doOnTextChanged { text, start, before, count ->
-            homeViewModel.getSearchProduct(SearchRequestModel(text.toString(),homeViewModel.pendingOrders?.order_id,sessionManager.getUser()?.business_id)).observe(viewLifecycleOwner){
+            homeViewModel.getSearchProduct(SearchRequestModel(text.toString(),args.orderId,sessionManager.getUser()?.business_id)).observe(viewLifecycleOwner){
                 it.getValueOrNull()?.let {
                     adapter.submitList(it.result)
                 }
@@ -75,7 +77,7 @@ class SearchProductFragment: BaseFragment<FragmentSerachProductBinding,HomeViewM
         }
 
         adapter.open = {it,type->
-            it?.product_order_id = homeViewModel.pendingOrders?.order_id
+            it?.product_order_id = args.orderId
             it?.business_id = sessionManager.getUser()?.business_id
             homeViewModel.updateOrderProduct(type,it!!).observe(viewLifecycleOwner){
                 it.getValueOrNull()?.let {

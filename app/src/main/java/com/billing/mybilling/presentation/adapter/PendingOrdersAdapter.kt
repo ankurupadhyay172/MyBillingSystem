@@ -8,11 +8,15 @@ import com.billing.mybilling.R
 import com.billing.mybilling.base.BaseListAdapter
 import com.billing.mybilling.data.model.response.PendingOrders
 import com.billing.mybilling.databinding.ItemPendingOrdersBinding
+import com.billing.mybilling.utils.OrderStatus
+import com.billing.mybilling.utils.OrderType
+import com.billing.mybilling.utils.setOrderStatus
 import javax.inject.Inject
+
 
 class PendingOrdersAdapter @Inject constructor(): BaseListAdapter<PendingOrders,ItemPendingOrdersBinding>(DiffCallback()) {
     var open:((id:String?,order:PendingOrders?)->Unit)? = null
-
+    var options:((id:String?,order:PendingOrders?)->Unit)? = null
     class DiffCallback: DiffUtil.ItemCallback<PendingOrders>(){
         override fun areItemsTheSame(oldItem: PendingOrders, newItem: PendingOrders): Boolean {
             return oldItem==newItem
@@ -29,10 +33,31 @@ class PendingOrdersAdapter @Inject constructor(): BaseListAdapter<PendingOrders,
     }
 
     override fun bind(binding: ItemPendingOrdersBinding, item: PendingOrders?) {
-       binding.userName.text = "Customer Name : "+item?.customer_name
-       binding.userDetail.text = "Table No : ${item?.table_no}"
-       binding.liOrder.setOnClickListener {
+        binding.userName.text = "Name : "+item?.customer_name
+        binding.orderStatus.text = "Status : "+item?.order_status?.setOrderStatus()
+//        binding.userDetail.text = item?.getOrderType()
+
+        if (item?.order_on== OrderType.TABLE.type){
+            binding.userDetail.text = "Table No : ${item.table_no}"
+        }else{
+            binding.userDetail.text = "Packing"
+        }
+
+
+        binding.price.text = item?.formatDateToTimeAgo()
+
+        when(item?.order_status){
+            OrderStatus.PENDING.status->binding.userImage.setImageResource(R.drawable.pendingorder)
+            OrderStatus.COOKING.status->binding.userImage.setImageResource(R.drawable.cooking)
+            OrderStatus.READY_TO_DELIVER.status->binding.userImage.setImageResource(R.drawable.readytosearve)
+        }
+
+        binding.liOrder.setOnClickListener {
            open?.invoke(item?.order_id,item)
+       }
+       binding.liOrder.setOnLongClickListener {
+           options?.invoke(item?.order_id,item)
+           return@setOnLongClickListener true
        }
     }
 }

@@ -9,6 +9,7 @@ import com.billing.mybilling.R
 import com.billing.mybilling.base.BaseFragment
 import com.billing.mybilling.data.model.request.AddOrderModel
 import com.billing.mybilling.databinding.FragmentAddOrderBinding
+import com.billing.mybilling.notification.sendNotificationToOrder
 import com.billing.mybilling.session.SessionManager
 import com.billing.mybilling.utils.OrderType
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,6 +20,7 @@ class AddOrderFragment: BaseFragment<FragmentAddOrderBinding,HomeViewModel>() {
     val homeViewModel: HomeViewModel by viewModels()
     @Inject
     lateinit var sessionManager: SessionManager
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getViewDataBinding().isTable = true
@@ -26,10 +28,12 @@ class AddOrderFragment: BaseFragment<FragmentAddOrderBinding,HomeViewModel>() {
 
         val table  = if (getViewDataBinding().isTable!!) OrderType.TABLE.type else OrderType.PACKING.type
 
+
         getViewDataBinding().checkout.setOnClickListener {
-            if (getViewDataBinding().edtTableNo.text.toString().isEmpty()){
+            if (getViewDataBinding().edtTableNo.text.toString().isEmpty()&&getViewDataBinding().isTable!!){
                 showToast("Please enter the table no")
             }else{
+                val table  = if (getViewDataBinding().isTable!!) OrderType.TABLE.type else OrderType.PACKING.type
                 val name = getViewDataBinding().edtCustomerName.text.toString()
                 val tableNo = getViewDataBinding().edtTableNo.text.toString()
                 val mobile = getViewDataBinding().edtCustomerMobile.text.toString()
@@ -39,6 +43,22 @@ class AddOrderFragment: BaseFragment<FragmentAddOrderBinding,HomeViewModel>() {
                         showToast(""+it.result)
                         showLoading(false)
                         if (it.status==1){
+                            if (getViewDataBinding().isTable!!){
+                                sendNotificationToOrder("New Order Found ","On Table No : $tableNo",
+                                    {
+
+                                    },{
+
+                                    })
+                            }else{
+                                sendNotificationToOrder("New Order Found ","For packing",
+                                    {
+
+                                    },{
+
+                                    })
+                            }
+
                             findNavController().popBackStack()
                         }
 
@@ -56,6 +76,7 @@ class AddOrderFragment: BaseFragment<FragmentAddOrderBinding,HomeViewModel>() {
     fun onPackingClick(){
         getViewDataBinding().isTable = false
     }
+
 
     override fun getLayoutId() = R.layout.fragment_add_order
     override fun getBindingVariable() = BR.model

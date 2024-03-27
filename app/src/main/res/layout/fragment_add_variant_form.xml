@@ -9,25 +9,14 @@
         type="String" />
     </data>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:orientation="vertical">
 
 
-        <ScrollView
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never"
-            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16.7dp"
-                android:layout_marginEnd="16.7dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
                 android:clipToPadding="false"
                 android:orientation="vertical"
                 android:paddingBottom="23.3dp">
@@ -42,6 +31,8 @@
                     android:fontFamily="@font/sf_pro_display_regular"
                     android:includeFontPadding="false"
                     android:text="Title"
+                    android:layout_marginStart="16.7dp"
+                    android:layout_marginEnd="16.7dp"
                     android:textColor="@color/silver_909397"
                     android:textSize="14sp" />
 
@@ -53,6 +44,8 @@
                     android:background="@drawable/rectangle_silver_border"
                     android:fontFamily="@font/sf_pro_display_medium"
                     android:hint="Enter Variant"
+                    android:layout_marginStart="16.7dp"
+                    android:layout_marginEnd="16.7dp"
                     android:includeFontPadding="false"
                     android:inputType="textCapWords"
                     android:padding="15dp"
@@ -68,6 +61,8 @@
                     android:fontFamily="@font/sf_pro_display_regular"
                     android:includeFontPadding="false"
                     android:text="Price"
+                    android:layout_marginStart="16.7dp"
+                    android:layout_marginEnd="16.7dp"
                     android:textColor="@color/silver_909397"
                     android:textSize="14sp" />
 
@@ -83,32 +78,36 @@
                     android:inputType="number"
                     android:maxLength="4"
                     android:padding="15dp"
+                    android:layout_marginStart="16.7dp"
+                    android:layout_marginEnd="16.7dp"
                     android:textColor="@color/title_color_22282f"
                     android:textColorHint="@color/silver_909397"
                     android:textSize="15sp" />
 
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/submit"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="33.3dp"
+                    android:layout_marginStart="16.7dp"
+                    android:layout_marginEnd="16.7dp"
+                    android:background="@drawable/rectangle_multi_gradient"
+                    android:fontFamily="@font/sf_pro_display_medium"
+                    android:includeFontPadding="false"
+                    android:text="Submit"
+                    android:layout_marginTop="@dimen/_18sdp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
 
 
             </LinearLayout>
 
-        </ScrollView>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/submit"
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="33.3dp"
-            android:layout_marginStart="16.7dp"
-            android:layout_marginEnd="16.7dp"
-            android:background="@drawable/rectangle_multi_gradient"
-            android:fontFamily="@font/sf_pro_display_medium"
-            android:includeFontPadding="false"
-            android:text="Submit"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
 
-    </RelativeLayout>
+
+
+
 </layout>

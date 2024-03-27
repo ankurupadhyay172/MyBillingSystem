@@ -59,4 +59,8 @@
         <item name="colorControlNormal">@color/white</item>
 
     </style>
+
+    <style name="CancelButton" parent="Widget.AppCompat.Button">
+        <item name="colorPrimary">@color/jffbg</item>
+    </style>
 </resources>

@@ -1,9 +1,8 @@
 package com.billing.mybilling.presentation
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.billing.mybilling.BR
@@ -13,50 +12,35 @@ import com.billing.mybilling.data.model.request.CommonRequestModel
 import com.billing.mybilling.database.DatabaseManager
 import com.billing.mybilling.databinding.FragmentCategoryBinding
 import com.billing.mybilling.presentation.adapter.CategoryAdapter
-import com.billing.mybilling.utils.SelectedAction
+import com.billing.mybilling.session.SessionManager
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 @AndroidEntryPoint
 class CategoryFragment: BaseFragment<FragmentCategoryBinding,HomeViewModel>() {
-    private val homeViewModel: HomeViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by activityViewModels()
 
     @Inject
     lateinit var adapter:CategoryAdapter
 
     @Inject
     lateinit var databaseManager: DatabaseManager
+    @Inject
+    lateinit var sessionManager:SessionManager
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         getViewDataBinding().rvCategory.adapter = adapter
 
-        updateCategory()
-
-        adapter.option = {model->
-            AlertDialog.Builder(requireContext()).setTitle(R.string.options)
-                .setItems(R.array.options) { dialog, which ->
-                 when(which){
-                     0-> {
-
-                     }
-                     1-> {
-                         showLoading(true)
-                         homeViewModel.addCategory(SelectedAction.DELETE.type, CommonRequestModel(model?.category_id)).observe(viewLifecycleOwner){
-                             it.getValueOrNull()?.let {
-                                 if (it.status==1){
-                                     showToast("Category deleted successfully")
-                                     updateCategory()
-                                 }else{
-                                     showToast(it.result)
-                                 }
-                                 showLoading(false)
-                             }
-                         }
-                     }
-                 }
-                }.show()
+        //updateCategory()
+        getCategoryFromDatabase()
+        getViewDataBinding().search.setOnClickListener {
+            findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToSearchProductFragment(homeViewModel.pendingOrders?.order_id))
+        }
+        getViewDataBinding().edtSearch.setOnClickListener {
+            findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToSearchProductFragment(homeViewModel.pendingOrders?.order_id))
         }
 
 //        lifecycleScope.launch {
@@ -69,16 +53,33 @@ class CategoryFragment: BaseFragment<FragmentCategoryBinding,HomeViewModel>() {
 
         adapter.open = {
             //findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToSearchProductFragment())
-            findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToProductListFragment(it))
+            //findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToProductListFragment(it))
+            findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToOrderProductByCategoryFragment(it))
+        }
+    }
+
+    private fun getCategoryFromDatabase() {
+        lifecycleScope.launch(Dispatchers.IO){
+            homeViewModel.getCategoriesListFromDatabase(CommonRequestModel(sessionManager.getUser()?.business_id))
+        }
+
+        databaseManager.getCategoriesLive().observe(viewLifecycleOwner){
+            adapter.submitList(it)
         }
     }
 
     private fun updateCategory() {
-//        homeViewModel.getCategoriesList().observe(viewLifecycleOwner){
-//            it.getValueOrNull()?.let {
-//                adapter.submitList(it.result)
-//            }
-//        }
+        showLoading(true)
+        homeViewModel.getCategoriesList(CommonRequestModel(sessionManager.getUser()?.business_id)).observe(viewLifecycleOwner){
+            it.getErrorIfExists()?.let {
+                showLoading(false)
+                showToast("${it.message}")
+            }
+            it.getValueOrNull()?.let {
+                showLoading(false)
+                adapter.submitList(it.result)
+            }
+        }
     }
 
 

@@ -9,6 +9,8 @@ import com.billing.mybilling.base.BaseListAdapter
 import com.billing.mybilling.data.model.response.PendingOrders
 import com.billing.mybilling.databinding.ItemCompletedOrdersBinding
 import com.billing.mybilling.databinding.ItemPendingOrdersBinding
+import com.billing.mybilling.utils.OrderStatus
+import com.billing.mybilling.utils.setOrderStatus
 import com.billing.mybilling.utils.setPrice
 import javax.inject.Inject
 
@@ -32,8 +34,17 @@ class CompletedOrdersAdapter @Inject constructor(): BaseListAdapter<PendingOrder
 
     override fun bind(binding: ItemCompletedOrdersBinding, item: PendingOrders?) {
        binding.userName.text = item?.customer_name
-       binding.timing.text = item?.timestamp
-       binding.price.text = item?.getTotalAmount().toString().setPrice()
+        binding.price.text = item?.formatDateToTimeAgo()
+        binding.userDetail.text = item?.getTotalAmount().toString().setPrice()
+        binding.orderStatus.text = "Status : "+item?.order_status?.setOrderStatus()
+       item?.order_status?.let {
+           if (it==OrderStatus.FAILED.status){
+               binding.userImage.setImageResource(R.drawable.cancel)
+           }else{
+               binding.userImage.setImageResource(R.drawable.check)
+           }
+       }
+
        binding.liOrder.setOnClickListener {
            open?.invoke(item?.order_id,item)
        }

@@ -1,10 +1,15 @@
 package com.billing.mybilling
 
+import android.Manifest
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
@@ -17,7 +22,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.billing.mybilling.base.BaseActivity
 import com.billing.mybilling.session.SessionManager
 import com.billing.mybilling.utils.PageConfiguration
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.RemoteMessage
 import dagger.hilt.android.AndroidEntryPoint
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -34,9 +44,10 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         toolBar2 = findViewById(R.id.toolBar2)
         setSupportActionBar(toolBar2)
+        EventBus.getDefault().register(this)
         val navHost = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navigationController = navHost.navController
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment))
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment,R.id.pendingOrders))
         setupActionBarWithNavController(navigationController,appBarConfiguration)
         lifecycleScope.launchWhenResumed {
             navigationController.addOnDestinationChangedListener{_,destination,_->
@@ -44,6 +55,7 @@ class MainActivity : BaseActivity() {
             }
         }
 
+        requestPermission()
 
     }
 
@@ -59,6 +71,7 @@ class MainActivity : BaseActivity() {
         R.id.logout->{
             sessionManager.deleteUser()
             while (navigationController.navigateUp()){navigationController.popBackStack()}
+            unSubscribeToTopic()
             Toast.makeText(this, "Logout Successfully", Toast.LENGTH_SHORT).show()
             navigationController.navigate(R.id.loginFragment)
 
@@ -76,4 +89,36 @@ class MainActivity : BaseActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return super.onSupportNavigateUp()||navigationController.navigateUp()
     }
+
+    private fun requestPermission() {
+        if (Build.VERSION.SDK_INT >= 33) {
+            requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
+    }
+
+    private val requestPermissionLauncher: ActivityResultLauncher<String> =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted ->
+
+        }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        try {
+            EventBus.getDefault().unregister(this)
+        } catch (e: Exception) {
+
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: RemoteMessage?) {
+        val pendingIntent =
+            navigationController.createDeepLink().setDestination(R.id.homeFragment)
+                .createPendingIntent()
+        Log.d("mylog", "onMessageEvent: message received")
+        setNotification(event?.data?.get("title"),event?.data?.get("body"),pendingIntent)
+    }
+
 }

@@ -69,6 +69,7 @@
                     <TextView
                         android:id="@+id/price"
                         android:text="@{user.user_status}"
+                        android:textColor="@color/teal_200"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -83,7 +84,7 @@
                     android:id="@+id/user_detail"
                     android:layout_width="wrap_content"
                     android:layout_marginTop="8.7dp"
-                    android:text="@{user.user_type}"
+                    android:text="@{user.user_id+`(`+user.user_type+`)`}"
                     android:layout_height="wrap_content"
                     android:textColor="@color/grey_828990"
                     android:fontFamily="@font/sf_pro_display_regular"

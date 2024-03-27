@@ -16,9 +16,9 @@ interface DatabaseManager {
     fun addDelivered(list: List<PendingOrders>)
     fun getVariantsLive(id:String?):LiveData<List<Variants>>
     fun getCategoriesLive():LiveData<List<Category>>
-    fun getAllOrdersByDate(id: Int,today:Date):LiveData<List<PendingOrders>>
-    fun getAllOrdersByMonth(id: Int,today:Date):LiveData<List<PendingOrders>>
-    fun getAllOrdersByYear(id: Int,today:Date):LiveData<List<PendingOrders>>
+    fun getAllOrdersByDate(today:Date):LiveData<List<PendingOrders>>
+    fun getAllOrdersByMonth(today:Date):LiveData<List<PendingOrders>>
+    fun getAllOrdersByYear(today:Date):LiveData<List<PendingOrders>>
     fun addProducts(products:List<Products>)
     fun clearAllItems()
     fun getAllProductsLive(id: String?):LiveData<List<Products>>

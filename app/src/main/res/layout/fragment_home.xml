@@ -224,7 +224,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/history"
+                        android:id="@+id/contactUs"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -234,7 +234,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@drawable/contactus" />
+                            android:src="@drawable/whatsapp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -266,18 +266,30 @@
                     android:visibility="@{error==null?visibility.GONE:visibility.VISIBLE}"
                     bind:error="@{error.toString()}"
                     layout="@layout/layout_loading"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvOrders"
-                    app:layout_constraintTop_toTopOf="parent"
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                    android:id="@+id/swipeToRefresh"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:listitem="@layout/item_pending_orders"
-                    android:layout_marginTop="10dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvOrders"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:listitem="@layout/item_pending_orders"
+                        android:layout_marginTop="10dp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+
+
+
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

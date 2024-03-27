@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16.7dp"
         android:layout_marginEnd="16.7dp"
-
         android:layout_marginBottom="16.7dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="6.7dp">
@@ -40,15 +39,19 @@
                     android:src="@drawable/pendingorder" />
             </FrameLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/liData"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:orientation="horizontal">
 
                     <TextView
@@ -64,6 +67,7 @@
 
                     <TextView
                         android:id="@+id/price"
+                        android:textColor="@color/teal_200"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -81,9 +85,26 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/grey_828990"
                     android:fontFamily="@font/sf_pro_display_regular"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/liData"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     android:includeFontPadding="false"
                     android:textSize="14sp" />
-            </LinearLayout>
+
+                <TextView
+                    android:id="@+id/orderStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="8.7dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey_828990"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/liData"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:includeFontPadding="false"
+                    android:textSize="14sp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -37,7 +37,6 @@
 
                 <LinearLayout
                     android:paddingBottom="55dp"
-
                     android:id="@+id/li_cart"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -628,8 +627,9 @@ Sat,Sun : 11:00am to 05:00pm "
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="25dp"
                         android:layout_marginRight="16dp"
-                        android:background="@drawable/rectangle_green"
+                        android:background="@drawable/rectangle_red"
                         android:fontFamily="@font/sf_pro_display_bold"
+                        android:theme="@style/CancelButton"
                         android:text="Cancel Order"
                         android:onClick="@{()->fragment.cancelOrder()}"
                         android:textColor="@color/white"

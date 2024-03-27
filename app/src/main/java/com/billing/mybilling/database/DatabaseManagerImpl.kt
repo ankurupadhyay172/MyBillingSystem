@@ -57,21 +57,21 @@ class DatabaseManagerImpl @Inject constructor(@ApplicationContext context: Conte
         return db.getMyDataBaseDao().getAllCategoriesLive()
     }
 
-    override fun getAllOrdersByDate(id: Int,today:Date): LiveData<List<PendingOrders>> {
-        return db.getMyDataBaseDao().getAllDeliveredOrdersByDate(id,today)
+    override fun getAllOrdersByDate(today:Date): LiveData<List<PendingOrders>> {
+        return db.getMyDataBaseDao().getAllDeliveredOrdersByDate(today)
     }
 
-    override fun getAllOrdersByMonth(id: Int, today: Date): LiveData<List<PendingOrders>> {
+    override fun getAllOrdersByMonth( today: Date): LiveData<List<PendingOrders>> {
         val format = SimpleDateFormat("yyyy").format(today)
         val start = Calendar.getInstance()
         start.set(format.toInt(),today.month,1)
         val end = Calendar.getInstance()
         val endDay = Common.lastDayOfMonth(format.toInt(),today.month+1)
         end.set(format.toInt(),today.month,endDay+1)
-        return db.getMyDataBaseDao().getAllOrdersByMonth(id,start.time.time,end.time.time)
+        return db.getMyDataBaseDao().getAllOrdersByMonth(start.time.time,end.time.time)
     }
 
-    override fun getAllOrdersByYear(id: Int, today: Date): LiveData<List<PendingOrders>> {
+    override fun getAllOrdersByYear( today: Date): LiveData<List<PendingOrders>> {
         return db.getMyDataBaseDao().getAllOrdersByYear(today)
     }
 

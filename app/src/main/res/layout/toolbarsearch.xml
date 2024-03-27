@@ -16,10 +16,11 @@
             android:layout_gravity="center"
             android:src="@drawable/ic_back"
             android:layout_width="0dp"
+            android:visibility="gone"
             android:layout_height="wrap_content"/>
         <EditText
             android:id="@+id/input"
-            android:layout_weight="8"
+            android:layout_weight="9"
             android:drawablePadding="10dp"
             android:hint="Search..."
             android:layout_width="0dp"

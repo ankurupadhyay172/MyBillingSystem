@@ -330,6 +330,7 @@
         <include
             android:visibility="@{isEmpty?visibility.VISIBLE:visibility.GONE}"
             layout="@layout/empty_screen"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -14,6 +14,7 @@ import com.billing.mybilling.databinding.FragmentHomeBinding
 import com.billing.mybilling.databinding.FragmentLoginBinding
 import com.billing.mybilling.presentation.HomeViewModel
 import com.billing.mybilling.session.SessionManager
+import com.billing.mybilling.utils.UserType
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -40,7 +41,13 @@ class LoginFragment:BaseFragment<FragmentLoginBinding, LoginViewModel>() {
                     showLoading(false)
                     if (it.status==1){
                         sessionManager.saveUser(it.result)
-                        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+                        subscribeToOrderTopic {response->
+                            if (it.result.user_type_id== UserType.ADMIN.id)
+                                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+                            else
+                                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToPendingOrders())
+                        }
+
                     }else{
                         findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignUpFragment())
                     }

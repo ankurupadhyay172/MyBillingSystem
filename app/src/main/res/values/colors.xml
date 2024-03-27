@@ -41,5 +41,6 @@
     <color name="root_gray">#E7E6E9</color>
     <color name="root_green">#008F6A</color>
     <color name="root_yellow">#F6D522</color>
+    <color name="bluePrimary">#6cd0e6</color>
 
 </resources>

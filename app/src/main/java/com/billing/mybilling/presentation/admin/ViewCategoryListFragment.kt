@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.billing.mybilling.BR
 import com.billing.mybilling.R
 import com.billing.mybilling.base.BaseFragment
+import com.billing.mybilling.data.model.request.AddCategoryRequestModel
 import com.billing.mybilling.data.model.request.CommonRequestModel
 import com.billing.mybilling.database.DatabaseManager
 import com.billing.mybilling.databinding.FragmentProductListBinding
@@ -67,7 +68,7 @@ class ViewCategoryListFragment: BaseFragment<FragmentViewCategoryListBinding, Ho
                         }
                         1-> {
                             showLoading(true)
-                            homeViewModel.addCategory(SelectedAction.DELETE.type, CommonRequestModel(model?.category_id)).observe(viewLifecycleOwner){
+                            homeViewModel.addCategory(SelectedAction.DELETE.type, AddCategoryRequestModel(model?.category_id)).observe(viewLifecycleOwner){
                                 it.getValueOrNull()?.let {
                                     if (it.status==1){
                                         showLoading(false)

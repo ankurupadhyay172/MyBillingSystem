@@ -16,8 +16,8 @@ class HomeRepository @Inject constructor(val homeApiService: HomeApiService,val 
         emit(response)
     }
 
-    suspend fun addCategory(type:String,commonRequestModel: CommonRequestModel):Flow<CommonResponseModel> = flow {
-        val response = homeApiService.addCategory(type,commonRequestModel)
+    suspend fun addCategory(type:String,addCategoryRequestModel: AddCategoryRequestModel):Flow<CommonResponseModel> = flow {
+        val response = homeApiService.addCategory(type,addCategoryRequestModel)
         emit(response)
     }
 
@@ -36,15 +36,15 @@ class HomeRepository @Inject constructor(val homeApiService: HomeApiService,val 
         emit(response)
     }
 
-//    suspend fun getCategories() {
-//        val response = homeApiService.getCategories()
-//        if (response.status==1)
-//            databaseManager.addCategory(response.result)
-//    }
-
     suspend fun getCategories(commonRequestModel: CommonRequestModel):Flow<CategoryResponseModel> = flow {
         val response = homeApiService.getCategories(commonRequestModel)
         emit(response)
+    }
+
+    suspend fun getCategoriesFromDataBase(commonRequestModel: CommonRequestModel){
+        val response = homeApiService.getCategories(commonRequestModel)
+        if (response.status==1)
+            databaseManager.addCategory(response.result)
     }
 
     suspend fun getVariants(commonRequestModel: CommonRequestModel):Flow<VariantsResponseModel> = flow {
@@ -61,6 +61,11 @@ class HomeRepository @Inject constructor(val homeApiService: HomeApiService,val 
 
     suspend fun getSearchProducts(searchRequestModel: SearchRequestModel):Flow<ProductsResponseModel> = flow {
         val response = homeApiService.getSearchProducts(searchRequestModel)
+        emit(response)
+    }
+
+    suspend fun getProductsByCategory(searchRequestModel: SearchRequestModel):Flow<ProductsResponseModel> = flow {
+        val response = homeApiService.getProductsByCategory(searchRequestModel)
         emit(response)
     }
 
@@ -85,8 +90,8 @@ class HomeRepository @Inject constructor(val homeApiService: HomeApiService,val 
         databaseManager.addDelivered(response.result)
     }
 
-    suspend fun updatePendingOrder(pendingOrders: PendingOrders?):Flow<CommonResponseModel> = flow {
-        val response = homeApiService.updatePendingOrder(pendingOrders)
+    suspend fun updatePendingOrder(type:String,pendingOrders: PendingOrders?):Flow<CommonResponseModel> = flow {
+        val response = homeApiService.updatePendingOrder(type,pendingOrders)
         emit(response)
     }
 

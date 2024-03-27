@@ -35,11 +35,20 @@
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.billing.mybilling.presentation.CategoryFragment"
-        android:label="CategoryFragment"
+        android:label="Categories"
         tools:layout="@layout/fragment_category">
         <action
             android:id="@+id/action_categoryFragment_to_productListFragment"
             app:destination="@id/productListFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_searchProductFragment"
+            app:destination="@id/searchProductFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_orderProductByCategoryFragment"
+            app:destination="@id/orderProductByCategoryFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_searchProductFragment2"
+            app:destination="@id/searchProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
@@ -48,7 +57,7 @@
         tools:layout="@layout/layout_cart"/>
     <fragment
         android:id="@+id/pendingOrders"
-        android:name="com.billing.mybilling.presentation.PendingOrders"
+        android:name="com.billing.mybilling.presentation.PendingOrdersFragment"
         android:label="PendingOrders"
         tools:layout="@layout/fragment_pending_orders">
         <action
@@ -81,7 +90,13 @@
         android:id="@+id/searchProductFragment"
         android:name="com.billing.mybilling.presentation.SearchProductFragment"
         android:label="Products "
-        tools:layout="@layout/fragment_serach_product"/>
+        tools:layout="@layout/fragment_serach_product">
+        <argument
+            android:name="order_id"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="na" />
+    </fragment>
     <fragment
         android:id="@+id/addOrderFragment2"
         android:name="com.billing.mybilling.presentation.AddOrderFragment"
@@ -106,6 +121,14 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="NA" />
+        <argument
+            android:name="model"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="na" />
+        <action
+            android:id="@+id/action_pendingOrdersDetailsFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/addDiscountFormFragment"
@@ -115,12 +138,21 @@
         <argument
             android:name="id"
             app:argType="string" />
+        <argument
+            android:name="item"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="na" />
     </fragment>
     <fragment
         android:id="@+id/deliveredOrdersFragment"
         android:name="com.billing.mybilling.presentation.DeliveredOrdersFragment"
         android:label="DeliveredOrdersFragment"
-        tools:layout="@layout/fragment_delivered_orders"/>
+        tools:layout="@layout/fragment_delivered_orders">
+                <action
+            android:id="@+id/action_deliveredOrdersFragment_to_orderDetailFragment"
+            app:destination="@id/orderDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/viewCategoryListFragment"
         android:name="com.billing.mybilling.presentation.admin.ViewCategoryListFragment"
@@ -222,11 +254,14 @@
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_pendingOrders"
+            app:destination="@id/pendingOrders" />
     </fragment>
     <fragment
         android:id="@+id/staffListFragment"
         android:name="com.billing.mybilling.presentation.login.StaffListFragment"
-        android:label="StaffListFragment"
+        android:label="Staff List"
         tools:layout="@layout/fragment_staff_list">
         <action
             android:id="@+id/action_staffListFragment_to_addStaffFormFragment"
@@ -242,4 +277,26 @@
         android:name="com.billing.mybilling.presentation.login.SignUpFragment"
         android:label="SignUpFragment"
         tools:layout="@layout/fragment_signup"/>
+    <fragment
+        android:id="@+id/orderProductByCategoryFragment"
+        android:name="com.billing.mybilling.presentation.OrderProductByCategoryFragment"
+        android:label="Products"
+        tools:layout="@layout/fragment_order_product_by_category">
+        <argument
+            android:name="categoryId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="na" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailFragment"
+        android:name="com.billing.mybilling.presentation.OrderDetailFragment"
+        android:label="Order Detail" >
+        <argument
+            android:name="item"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="na" />
+    </fragment>
+
 </navigation>

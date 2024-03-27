@@ -2,6 +2,8 @@ package com.billing.mybilling.data.model.response
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.billing.mybilling.utils.OrderStatus
+import com.billing.mybilling.utils.OrderType
 import com.billing.mybilling.utils.PaymentType
 import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
@@ -43,15 +45,19 @@ data class PendingOrdersResponseModel(
 
 @Entity
 data class PendingOrders(@PrimaryKey(autoGenerate = false)
-                         val order_id:String,val customer_name:String,val table_no:String,
-                         val user_instruction: String,val customer_contact: String,
-                         var payment_type:Int,var customer_discount:Int,var delivery_charges:Int,
-                         val order_on:String,val timestamp:String,val order_user:String,var order_status:Int,
-                         val timeLong:Long,val products: List<Products>?){
+                         val order_id:String,val customer_name:String?=null,val table_no:String?=null,
+                         val user_instruction: String?=null,val customer_contact: String?=null,
+                         var payment_type:Int=0,var customer_discount:Int=0,var delivery_charges:Int=0,
+                         val order_on:String?=null,val timestamp:String?=null,val order_user:String?=null,
+                         var order_status:Int, val timeLong:Long?=null,val products: List<Products>?=null){
+
+
+
 
      fun getTotalAmount():Int{
 
             var tot = 0
+            if (order_status==OrderStatus.DELIVERED.status)
             products?.let {
                 for (p in it) {
                     tot += (p.price!!.toInt() * p.selected_quan)-customer_discount
@@ -59,6 +65,25 @@ data class PendingOrders(@PrimaryKey(autoGenerate = false)
             }
 
         return tot
+    }
+
+    fun formatDateToTimeAgo(): String {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val date = dateFormat.parse(timestamp)
+        val currentDate = Date()
+
+        val diff = currentDate.time - date.time
+        val seconds = diff / 1000
+        val minutes = seconds / 60
+        val hours = minutes / 60
+        val days = hours / 24
+
+        return when {
+            days > 0 -> "$days days ago"
+            hours > 0 -> "$hours hours ago"
+            minutes > 0 -> "$minutes minutes ago"
+            else -> "$seconds seconds ago"
+        }
     }
 
 }

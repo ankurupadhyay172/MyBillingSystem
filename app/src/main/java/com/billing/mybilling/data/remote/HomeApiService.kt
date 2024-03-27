@@ -13,7 +13,7 @@ interface HomeApiService {
     suspend fun getStaffList(@Body commonRequestModel: CommonRequestModel):StaffResponseModel
 
     @POST("AddCategory.php")
-    suspend fun addCategory(@Query("type") type:String,@Body commonRequestModel: CommonRequestModel): CommonResponseModel
+    suspend fun addCategory(@Query("type") type:String,@Body addCategoryRequestModel: AddCategoryRequestModel): CommonResponseModel
 
     @POST("AddProduct.php")
     suspend fun addProduct(@Query("type") type:String,@Body addProductRequestModel: AddProductRequestModel): CommonResponseModel
@@ -39,6 +39,9 @@ interface HomeApiService {
     @POST("ReadSearchProducts.php")
     suspend fun getSearchProducts(@Body searchRequestModel: SearchRequestModel): ProductsResponseModel
 
+    @POST("ReadProductByCategory.php")
+    suspend fun getProductsByCategory(@Body searchRequestModel: SearchRequestModel): ProductsResponseModel
+
     @POST("AddToCart.php")
     suspend fun addToCart(cartRequestModel: CartRequestModel): CommonResponseModel
 
@@ -52,7 +55,7 @@ interface HomeApiService {
     suspend fun getCompletedOrders(@Body commonRequestModel: CommonRequestModel):PendingOrdersResponseModel
 
     @POST("UpdatePendingOrder.php")
-    suspend fun updatePendingOrder(@Body pendingOrders: PendingOrders?):CommonResponseModel
+    suspend fun updatePendingOrder(@Query("type") type:String,@Body pendingOrders: PendingOrders?):CommonResponseModel
 
     @POST("ReadPendingOrdersDetails.php")
     suspend fun getPendingOrdersProducts(@Body commonRequestModel: CommonRequestModel):PendingOrderDetailsResponseModel

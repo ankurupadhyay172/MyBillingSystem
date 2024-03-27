@@ -22,8 +22,10 @@ open class SingleLiveDataEvent<out T>(private val content: T) {
 
 class SingleLiveObserver<T>(private val onEventUnHandledContent: (T)->Unit):
         Observer<SingleLiveDataEvent<T>>{
-    override fun onChanged(event: SingleLiveDataEvent<T>?) {
-        event?.getContentIfNotHandled()?.let {value->
+
+
+    override fun onChanged(event: SingleLiveDataEvent<T>) {
+        event.getContentIfNotHandled()?.let {value->
             onEventUnHandledContent(value)
         }
     }

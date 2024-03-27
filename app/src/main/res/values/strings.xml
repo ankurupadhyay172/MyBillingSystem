@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">My Billing</string>
     <string name="rupee">₹</string>
-    
+    <string name="default_notification_channel_id">newOrder</string>
     <string-array name="filter_options">
         <item>day by day</item>
         <item>month by month</item>
         <item>year by year</item>
     </string-array>
+    <string name="option_order">Update order status</string>
     <string name="options">Select an action</string>
     <string-array name="option_del">
         <item >Delete </item>
@@ -27,4 +28,11 @@
     <string name="warning_complete_order">Do you really want to complete this order ?</string>
     <string name="receive_online">Receive Online</string>
     <string name="receive_cash">Receive Cash</string>
+    <string-array name="options_orders">
+        <item >Pending</item>
+        <item >Cooking </item>
+        <item >ready to delivery </item>
+
+
+    </string-array>
 </resources>

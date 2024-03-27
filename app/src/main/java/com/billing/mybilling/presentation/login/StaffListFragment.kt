@@ -50,7 +50,9 @@ class StaffListFragment:BaseFragment<FragmentStaffListBinding,HomeViewModel>() {
 
                 }.show()
         }
-
+        getViewDataBinding().fabAdd.setOnClickListener {
+            findNavController().navigate(StaffListFragmentDirections.actionStaffListFragmentToAddStaffFormFragment())
+        }
 
     }
 
