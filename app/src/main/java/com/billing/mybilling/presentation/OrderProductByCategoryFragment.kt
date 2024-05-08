@@ -52,6 +52,7 @@ class OrderProductByCategoryFragment: BaseFragment<FragmentOrderProductByCategor
                     showLoading(false)
                     homeViewModel.loadState.postValue(LoadingState.Loaded)
                     adapter.submitList(it.result)
+                    getViewDataBinding().isEmpty = it.status==0
                 }
             }
 

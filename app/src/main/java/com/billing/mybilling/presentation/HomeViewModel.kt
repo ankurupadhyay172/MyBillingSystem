@@ -176,6 +176,10 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
         }
     }
 
+    suspend fun getProductsFromDatabase(commonRequestModel: CommonRequestModel){
+        homeRepository.getProductsFromDatabase(commonRequestModel)
+    }
+
     fun getProductsList(commonRequestModel: CommonRequestModel) = liveData(Dispatchers.IO)  {
         homeRepository.getProducts(commonRequestModel).toLoadingState().catch {  }.collect{
             emit(it)

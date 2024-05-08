@@ -8,7 +8,12 @@
         <variable
             name="homeViewModel"
             type="com.billing.mybilling.presentation.HomeViewModel" />
-
+        <variable
+            name="visibility"
+            type="android.view.View" />
+        <variable
+            name="isEmpty"
+            type="Boolean" />
 
         <variable
             name="onRetry"
@@ -34,7 +39,9 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:nestedScrollingEnabled="false" />
-
+        <include
+            android:visibility="@{isEmpty?visibility.VISIBLE:visibility.GONE}"
+            layout="@layout/empty_screen"/>
         <include
             android:id="@+id/loading"
             layout="@layout/fragment_loader"

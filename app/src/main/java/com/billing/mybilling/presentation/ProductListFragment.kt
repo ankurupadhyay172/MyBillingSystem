@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.billing.mybilling.BR
@@ -17,6 +18,8 @@ import com.billing.mybilling.presentation.adapter.ViewProductListAdapter
 import com.billing.mybilling.utils.SelectedAction
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -33,10 +36,11 @@ class ProductListFragment: BaseFragment<FragmentProductListBinding,HomeViewModel
             rvProduct.adapter = adapter
         }
             getViewDataBinding().layoutError.btnRetry.setOnClickListener {
-                getProducts()
+                getProductsFromDatabase()
             }
 
-            getProducts()
+            //getProducts()
+            getProductsFromDatabase()
 
 //        lifecycleScope.launch {
 //            homeViewModel.getProductsList(CommonRequestModel(args.id))
@@ -82,6 +86,15 @@ class ProductListFragment: BaseFragment<FragmentProductListBinding,HomeViewModel
                     }
                     }
                 }.show()
+        }
+    }
+
+    private fun getProductsFromDatabase() {
+        lifecycleScope.launch(Dispatchers.IO){
+            homeViewModel.getProductsFromDatabase(CommonRequestModel(args.id))
+        }
+        databaseManager.getAllProductsLive(args.id).observe(viewLifecycleOwner){
+            adapter.submitList(it)
         }
     }
 

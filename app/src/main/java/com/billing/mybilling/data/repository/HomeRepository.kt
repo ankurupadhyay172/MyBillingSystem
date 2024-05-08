@@ -53,6 +53,13 @@ class HomeRepository @Inject constructor(val homeApiService: HomeApiService,val 
     }
 
 
+    suspend fun getProductsFromDatabase(commonRequestModel: CommonRequestModel){
+        val response = homeApiService.getProducts(commonRequestModel)
+        if (response.status==1)
+            databaseManager.addProducts(response.result)
+
+    }
+
     suspend fun getProducts(commonRequestModel: CommonRequestModel):Flow<ProductsResponseModel> = flow {
         val response = homeApiService.getProducts(commonRequestModel)
         emit(response)
