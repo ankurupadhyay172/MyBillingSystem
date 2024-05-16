@@ -40,7 +40,7 @@ class SplashScreenFragment:BaseFragment<FragmentSplashScreenBinding,HomeViewMode
             findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToLoginFragment())
         }else{
             sessionManager.getUser()?.let {
-                showToast("${it.user_type_id}")
+//                showToast("${it.user_type_id}")
                 when(it.user_type_id){
                     UserType.ADMIN.id -> findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToHomeFragment())
                     UserType.STAFF.id-> findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToPendingOrders())

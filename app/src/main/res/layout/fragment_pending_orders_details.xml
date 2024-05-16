@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="model"
             type="com.billing.mybilling.presentation.HomeViewModel" />
+
         <variable
             name="model2"
             type="com.billing.mybilling.data.model.response.PendingOrders" />
+
         <variable
             name="fragment"
             type="com.billing.mybilling.presentation.PendingOrdersDetailsFragment" />
@@ -36,65 +39,70 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:paddingBottom="55dp"
                     android:id="@+id/li_cart"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingBottom="55dp">
 
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/recyclerView"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:clipToPadding="false"
                         android:orientation="vertical"
                         android:paddingLeft="16dp"
-                        android:clipToPadding="false"
-                        android:paddingTop="27.5dp" />
+                        android:paddingTop="27.5dp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
                     <Button
-                        android:padding="15dp"
-                        android:layout_gravity="center"
-                        android:gravity="center"
                         android:id="@+id/add_item"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="25dp"
                         android:layout_marginRight="16dp"
-                        android:drawableLeft="@drawable/ic_add"
+                        android:theme="@style/AddButton"
                         android:background="@drawable/rectangle_green"
+                        android:drawableLeft="@drawable/ic_add"
                         android:fontFamily="@font/sf_pro_display_bold"
+                        android:gravity="center"
+                        android:padding="15dp"
                         android:text="Add Item"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
 
                     <LinearLayout
-                        android:visibility="gone"
-                        android:layout_alignBottom="@+id/recyclerview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/recyclerview"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="16.2dp"
                         android:layout_marginRight="16dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <LinearLayout
 
-                            android:backgroundTint="@color/jffbg"
                             android:id="@+id/li_ac"
-                            android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="7.5dp"
+                            android:layout_weight="1"
                             android:background="@drawable/rectangle_gray_boxprofile"
+                            android:backgroundTint="@color/jffbg"
                             android:orientation="horizontal"
                             android:paddingLeft="17dp"
                             android:paddingTop="18dp"
                             android:paddingRight="13dp"
-                            android:layout_marginRight="7.5dp"
                             android:paddingBottom="18dp">
 
                             <TextView
@@ -115,17 +123,17 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:backgroundTint="@color/jffbg"
                             android:id="@+id/li_nonac"
-                            android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="7.5dp"
+                            android:layout_weight="1"
                             android:background="@drawable/rectangle_gray_boxprofile"
+                            android:backgroundTint="@color/jffbg"
                             android:orientation="horizontal"
                             android:paddingLeft="17dp"
                             android:paddingTop="18dp"
                             android:paddingRight="13dp"
-                            android:layout_marginLeft="7.5dp"
                             android:paddingBottom="18dp">
 
                             <TextView
@@ -146,464 +154,20 @@
                         </LinearLayout>
                     </LinearLayout>
 
-
-                    <LinearLayout
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16.2dp"
-                        android:layout_marginRight="16dp"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:backgroundTint="@color/appcolor"
-                            android:id="@+id/li_delivery"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/rectangle_gray_boxprofile"
-                            android:orientation="horizontal"
-                            android:paddingLeft="17dp"
-                            android:paddingTop="18dp"
-                            android:paddingRight="13dp"
-                            android:layout_marginRight="7.5dp"
-                            android:onClick="@{()->model.updatePaymentType(true)}"
-                            android:paddingBottom="18dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:fontFamily="@font/sf_pro_display_semibold"
-                                android:text="@string/receive_online"
-                                android:textColor="@color/white"
-                                android:onClick="@{()->model.updatePaymentType(true)}"
-                                android:textSize="15sp" />
-
-                            <ImageView
-                                android:id="@+id/img_delivery"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:onClick="@{()->model.updatePaymentType(true)}"
-                                android:src="@{model.isPaymentOnline()?@drawable/ic_radio:@drawable/circle_radio}" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:backgroundTint="@color/green"
-                            android:id="@+id/li_takeaway"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/rectangle_gray_boxprofile"
-                            android:orientation="horizontal"
-                            android:paddingLeft="17dp"
-                            android:paddingTop="18dp"
-                            android:paddingRight="13dp"
-                            android:layout_marginLeft="7.5dp"
-                            android:paddingBottom="18dp"
-                            android:onClick="@{()->model.updatePaymentType(false)}">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:fontFamily="@font/sf_pro_display_semibold"
-                                android:text="@string/receive_cash"
-                                android:textColor="@color/white"
-                                android:onClick="@{()->model.updatePaymentType(false)}"
-                                android:textSize="15sp" />
-
-                            <ImageView
-                                android:id="@+id/img_takeaway"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:onClick="@{()->model.updatePaymentType(false)}"
-                                android:src="@{model.isPaymentOnline()?@drawable/circle_radio:@drawable/ic_radio}" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:visibility="gone"
-                        android:id="@+id/li_notice"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="16dp"
-                        android:background="@drawable/dotted_line_rect_green"
-                        android:orientation="horizontal"
-                        android:paddingLeft="18dp"
-                        android:paddingTop="18dp"
-                        android:paddingRight="13.9dp"
-                        android:paddingBottom="18dp">
-
-                        <TextView
-                            android:visibility="gone"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/sf_pro_display_semibold"
-                            android:text="In takeaway you will get food "
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/error_msg"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="11.1dp"
-                            android:fontFamily="@font/sf_pro_display_semibold"
-                            android:text="Delivery Time
- Normal Days : 11:00am to 09:00pm
-Sat,Sun : 11:00am to 05:00pm "
-                            android:textColor="@color/green"
-                            android:textSize="16sp" />
-
-                        <ImageView
-                            android:visibility="gone"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_check_circle" />
-                    </LinearLayout>
-
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10.8dp"
-                        android:layout_marginRight="16dp"
-                        android:background="@color/smoke_gray" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="55.2dp"
-                        android:layout_marginRight="16dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/sf_pro_display_regular"
-                            android:text="Name"
-                            android:textColor="@color/smoke_gray"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/sf_pro_display_bold"
-                            android:text="@{model2.customer_name}"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10.8dp"
-                        android:layout_marginRight="16dp"
-                        android:background="@color/smoke_gray" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10.2dp"
-                        android:layout_marginRight="16dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/sf_pro_display_regular"
-                            android:text="Mobile No"
-                            android:textColor="@color/smoke_gray"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/mobile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/sf_pro_display_bold"
-                            android:text="@{model2.customer_contact}"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10.8dp"
-                        android:layout_marginRight="16dp"
-                        android:background="@color/smoke_gray" />
-
-
-                    <LinearLayout
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10.2dp"
-                        android:layout_marginRight="16dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/sf_pro_display_regular"
-                            android:text="Total Price"
-                            android:textColor="@color/smoke_gray"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/total_price"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/sf_pro_display_bold"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10.8dp"
-                        android:layout_marginRight="16dp"
-                        android:background="@color/smoke_gray" />
-
-
-                    <LinearLayout
-                        android:onClick="@{()->fragment.addDiscount()}"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10.2dp"
-                        android:layout_marginRight="16dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:onClick="@{()->fragment.addDiscount()}"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/sf_pro_display_regular"
-                            android:text="Discount (₹)"
-                            android:textColor="@color/smoke_gray"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:onClick="@{()->fragment.addDiscount()}"
-                            android:inputType="number"
-                            android:layout_gravity="end"
-                            android:id="@+id/total_discount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/sf_pro_display_bold"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10.8dp"
-                        android:layout_marginRight="16dp"
-                        android:background="@color/smoke_gray" />
-
-
-                    <LinearLayout
-                        android:onClick="@{()->fragment.addDeliveryCharge()}"
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10.2dp"
-                        android:layout_marginRight="16dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-
-                            android:onClick="@{()->fragment.addDeliveryCharge()}"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/sf_pro_display_regular"
-                            android:text="Delivery Chrage"
-                            android:textColor="@color/smoke_gray"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/delivery_charge"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/sf_pro_display_bold"
-                            android:onClick="@{()->fragment.addDeliveryCharge()}"
-                            android:text=""
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-
-                    <View
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10.8dp"
-                        android:layout_marginRight="16dp"
-                        android:background="@color/smoke_gray" />
-
-                    <LinearLayout
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10.2dp"
-                        android:layout_marginRight="16dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/sf_pro_display_regular"
-                            android:text="Final Price"
-                            android:textColor="@color/smoke_gray"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/final_amount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/sf_pro_display_bold"
-                            android:text=""
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16.2dp"
-                        android:layout_marginRight="16dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/sf_pro_display_regular"
-                            android:text="Grand Total"
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/grand_total"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/sf_pro_display_bold"
-                            android:text=""
-                            android:textColor="@color/green"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10.8dp"
-                        android:layout_marginRight="16dp"
-                        android:background="@color/smoke_gray" />
-
-
-                    <TextView
-                        android:layout_marginBottom="10.2dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16.2dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:fontFamily="@font/sf_pro_display_regular"
-                        android:text="Billing Statement"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-
-                        <CheckBox
-
-                            android:visibility="gone"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="25dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/sf_pro_display_medium"
-                            android:text="Bill on message"
-                            android:textColor="@color/jffcolor"
-                            android:textSize="13.5sp" />
-
-                        <CheckBox
-                            android:visibility="gone"
-                            android:id="@+id/check_whatsapp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="25dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/sf_pro_display_medium"
-                            android:text="Bill on what's app"
-                            android:textColor="@color/jffcolor"
-                            android:textSize="13.5sp" />
-
-
-                    </LinearLayout>
-
-                    <ProgressBar
-                        android:visibility="gone"
-                        android:indeterminateTint="@color/white"
-                        android:id="@+id/progress_checkout"
+                    <Button
+                        android:id="@+id/submit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="25dp"
                         android:layout_marginRight="16dp"
-
                         android:background="@drawable/rectangle_green"
                         android:fontFamily="@font/sf_pro_display_bold"
-                        android:text="Checkout"
+                        android:onClick="@{()->fragment.submit()}"
+                        android:text="Submit"
                         android:textColor="@color/white"
-                        android:textSize="16sp" />
-
+                        android:textSize="16sp"
+                         />
 
                     <Button
                         android:id="@+id/checkout"
@@ -612,12 +176,14 @@ Sat,Sun : 11:00am to 05:00pm "
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="25dp"
                         android:layout_marginRight="16dp"
-                        android:onClick="@{()->fragment.addCheckout()}"
+                        android:theme="@style/WhatsAppButton"
                         android:background="@drawable/rectangle_green"
                         android:fontFamily="@font/sf_pro_display_bold"
+                        android:onClick="@{()->fragment.addCheckout()}"
                         android:text="Checkout"
                         android:textColor="@color/white"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:visibility="gone" />
 
 
                     <Button
@@ -629,11 +195,12 @@ Sat,Sun : 11:00am to 05:00pm "
                         android:layout_marginRight="16dp"
                         android:background="@drawable/rectangle_red"
                         android:fontFamily="@font/sf_pro_display_bold"
-                        android:theme="@style/CancelButton"
-                        android:text="Cancel Order"
                         android:onClick="@{()->fragment.cancelOrder()}"
+                        android:text="Cancel Order"
                         android:textColor="@color/white"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:theme="@style/CancelButton"
+                        android:visibility="gone" />
 
 
                 </LinearLayout>

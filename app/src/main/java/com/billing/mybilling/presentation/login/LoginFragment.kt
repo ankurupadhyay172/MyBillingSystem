@@ -11,6 +11,7 @@ import com.billing.mybilling.base.BaseFragment
 import com.billing.mybilling.data.model.request.LoginRequestModel
 import com.billing.mybilling.utils.SingleLiveDataEvent
 import com.billing.mybilling.databinding.FragmentHomeBinding
+import com.billing.mybilling.databinding.FragmentLogin2Binding
 import com.billing.mybilling.databinding.FragmentLoginBinding
 import com.billing.mybilling.presentation.HomeViewModel
 import com.billing.mybilling.session.SessionManager
@@ -19,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class LoginFragment:BaseFragment<FragmentLoginBinding, LoginViewModel>() {
+class LoginFragment:BaseFragment<FragmentLogin2Binding, LoginViewModel>() {
     private val homeViewModel:LoginViewModel by viewModels()
     @Inject
     lateinit var sessionManager: SessionManager
@@ -59,7 +60,7 @@ class LoginFragment:BaseFragment<FragmentLoginBinding, LoginViewModel>() {
 
     }
 
-    override fun getLayoutId() = R.layout.fragment_login
+    override fun getLayoutId() = R.layout.fragment_login2
     override fun getBindingVariable() = BR.model
     override fun getViewModel() = homeViewModel
 }

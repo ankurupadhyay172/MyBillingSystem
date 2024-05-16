@@ -9,5 +9,7 @@ class Common {
         fun lastDayOfMonth(Y: Int, M: Int): Int {
             return LocalDate.of(Y, M, 1).getMonth().length(Year.of(Y).isLeap)
         }
+
+
     }
 }

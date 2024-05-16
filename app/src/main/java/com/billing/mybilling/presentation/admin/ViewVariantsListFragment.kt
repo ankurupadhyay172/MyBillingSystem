@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ViewVariantsListFragment : BaseFragment<FragmentViewCategoryListBinding, HomeViewModel>() {
+class ViewVariantsListFragment : BaseFragment<FragmentProductListBinding, HomeViewModel>() {
     val homeViewModel: HomeViewModel by viewModels()
 
     @Inject
@@ -37,7 +37,7 @@ class ViewVariantsListFragment : BaseFragment<FragmentViewCategoryListBinding, H
     val args: ViewVariantsListFragmentArgs by navArgs()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getViewDataBinding().recyclerview.adapter = adapter
+        getViewDataBinding().rvProduct.adapter = adapter
         showLoading(true)
 
 
@@ -92,7 +92,7 @@ class ViewVariantsListFragment : BaseFragment<FragmentViewCategoryListBinding, H
         }
     }
 
-    override fun getLayoutId() = R.layout.fragment_view_category_list
+    override fun getLayoutId() = R.layout.fragment_product_list
     override fun getBindingVariable() = BR.model
     override fun getViewModel() = homeViewModel
 }

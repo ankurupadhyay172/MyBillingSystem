@@ -19,6 +19,7 @@
         android:layout_marginBottom="25dp">
 
         <ImageView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_veg" />
@@ -36,25 +37,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-4dp"
-                android:fontFamily="@font/sfpro_display_medium"
+                android:fontFamily="@font/poppins_medium"
                 android:letterSpacing="0.0525"
-                android:text="Sada Dosa"
                 android:textColor="@color/black"
-                android:textSize="14.7sp" />
+                android:textSize="@dimen/_11sdp" />
 
 
             <TextView
-                android:padding="5dp"
-                android:background="@drawable/rect_pink_border2"
+
                 android:id="@+id/size"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/sfpro_display_semibold"
+                android:fontFamily="@font/poppins_regular"
                 android:letterSpacing="0.0525"
                 android:text="Size"
-                android:textColor="@color/blue"
-                android:textSize="13.3sp"
-                android:layout_marginLeft="3dp" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/_8sdp"
+                 />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -65,21 +64,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/sfpro_display_semibold"
+                    android:fontFamily="@font/poppins_bold"
                     android:letterSpacing="0.0525"
                     android:text="₹"
-                    android:textColor="@color/blue"
-                    android:textSize="13.3sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp" />
 
                 <TextView
                     android:id="@+id/total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/sfpro_display_semibold"
+                    android:fontFamily="@font/poppins_bold"
                     android:letterSpacing="0.0525"
-                    android:text="220"
-                    android:textColor="@color/blue"
-                    android:textSize="13.3sp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp"
                     android:layout_marginLeft="3dp" />
             </LinearLayout>
         </LinearLayout>

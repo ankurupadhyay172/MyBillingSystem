@@ -105,6 +105,7 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
     implementation 'com.github.bumptech.glide:glide:4.15.1'
     implementation 'com.makeramen:roundedimageview:2.3.0'
+    implementation 'com.itextpdf:itextg:5.5.10'
 
 }
 kapt{

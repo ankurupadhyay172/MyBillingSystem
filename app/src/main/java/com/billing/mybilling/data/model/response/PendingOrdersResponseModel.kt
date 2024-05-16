@@ -45,11 +45,12 @@ data class PendingOrdersResponseModel(
 
 @Entity
 data class PendingOrders(@PrimaryKey(autoGenerate = false)
-                         val order_id:String,val customer_name:String?=null,val table_no:String?=null,
-                         val user_instruction: String?=null,val customer_contact: String?=null,
+                         var order_id:String,val customer_name:String?=null,val table_no:String?=null,
+                         var tableId:String?=null,
+                         val user_instruction: String?=null,var customer_contact: String?=null,
                          var payment_type:Int=0,var customer_discount:Int=0,var delivery_charges:Int=0,
                          val order_on:String?=null,val timestamp:String?=null,val order_user:String?=null,
-                         var order_status:Int, val timeLong:Long?=null,val products: List<Products>?=null){
+                         var order_status:Int, val timeLong:Long?=null,var products: List<Products>?=null,var receiveOnline:String="0",var receiveCash:String="0"){
 
 
 

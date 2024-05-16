@@ -46,7 +46,10 @@ interface HomeApiService {
     suspend fun addToCart(cartRequestModel: CartRequestModel): CommonResponseModel
 
     @POST("CreateOrder.php")
-    suspend fun createOrder(@Body addOrderModel: AddOrderModel): CommonResponseModel
+    suspend fun createMyOrder(@Body addOrderModel: AddOrderModel): OrderResponseModel
+
+    @POST("ReadTable.php")
+    suspend fun readTable(@Body commonRequestModel: CommonRequestModel): TableResponseModel
 
     @POST("ReadPendingOrders.php")
     suspend fun getPendingOrders(@Body commonRequestModel: CommonRequestModel):PendingOrdersResponseModel

@@ -2,7 +2,7 @@ package com.billing.mybilling
 
 import android.Manifest
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -93,6 +93,7 @@ class MainActivity : BaseActivity() {
     private fun requestPermission() {
         if (Build.VERSION.SDK_INT >= 33) {
             requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+
         }
     }
 

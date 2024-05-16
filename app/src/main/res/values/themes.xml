@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.MyBilling" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/root_green</item>
+        <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -59,8 +59,15 @@
         <item name="colorControlNormal">@color/white</item>
 
     </style>
-
+    <style name="AddButton">
+        <item name="colorPrimary">@color/myblue</item>
+    </style>
     <style name="CancelButton" parent="Widget.AppCompat.Button">
         <item name="colorPrimary">@color/jffbg</item>
+    </style>
+
+    <style name="WhatsAppButton" parent="Widget.AppCompat.Button">
+        <item name="colorPrimary">@color/green</item>
+        <item name="android:drawableStart">@drawable/whatsapp</item>
     </style>
 </resources>

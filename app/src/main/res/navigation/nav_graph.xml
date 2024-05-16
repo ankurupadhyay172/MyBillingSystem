@@ -101,7 +101,13 @@
         android:id="@+id/addOrderFragment2"
         android:name="com.billing.mybilling.presentation.AddOrderFragment"
         android:label="Manage Order"
-        tools:layout="@layout/fragment_add_order"/>
+        tools:layout="@layout/fragment_add_order">
+        <action
+            android:id="@+id/action_addOrderFragment2_to_categoryFragment"
+            app:destination="@id/categoryFragment"
+            app:popUpTo="@id/addOrderFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/pendingOrdersDetailsFragment"
         android:name="com.billing.mybilling.presentation.PendingOrdersDetailsFragment"
@@ -109,7 +115,8 @@
         tools:layout="@layout/fragment_pending_orders_details">
         <argument
             android:name="id"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true" />
         <action
             android:id="@+id/action_pendingOrdersDetailsFragment_to_searchProductFragment"
             app:destination="@id/searchProductFragment" />
@@ -129,6 +136,12 @@
         <action
             android:id="@+id/action_pendingOrdersDetailsFragment_to_categoryFragment"
             app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_pendingOrdersDetailsFragment_to_ordersBillingFragment"
+            app:destination="@id/ordersBillingFragment" />
+        <action
+            android:id="@+id/action_pendingOrdersDetailsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/addDiscountFormFragment"
@@ -287,6 +300,12 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="na" />
+        <action
+            android:id="@+id/action_orderProductByCategoryFragment_to_pendingOrdersDetailsFragment"
+            app:destination="@id/pendingOrdersDetailsFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/orderDetailFragment"
@@ -297,6 +316,25 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="na" />
+    </fragment>
+    <fragment
+        android:id="@+id/ordersBillingFragment"
+        android:name="com.billing.mybilling.presentation.OrdersBillingFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_orders_billing">
+        <action
+            android:id="@+id/action_ordersBillingFragment_to_addDiscountFormFragment"
+            app:destination="@id/addDiscountFormFragment" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="na"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_ordersBillingFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/ordersBillingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

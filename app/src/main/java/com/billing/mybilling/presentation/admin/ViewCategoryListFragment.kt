@@ -18,6 +18,7 @@ import com.billing.mybilling.database.DatabaseManager
 import com.billing.mybilling.databinding.FragmentProductListBinding
 import com.billing.mybilling.databinding.FragmentViewCategoryListBinding
 import com.billing.mybilling.presentation.HomeViewModel
+import com.billing.mybilling.presentation.adapter.CategoryAdapter
 import com.billing.mybilling.presentation.adapter.ProductsAdapter
 import com.billing.mybilling.presentation.adapter.ViewCategoryAdapter
 import com.billing.mybilling.session.SessionManager
@@ -33,7 +34,7 @@ import javax.inject.Inject
 class ViewCategoryListFragment: BaseFragment<FragmentViewCategoryListBinding, HomeViewModel>() {
     val homeViewModel: HomeViewModel by viewModels()
     @Inject
-    lateinit var adapter: ViewCategoryAdapter
+    lateinit var adapter: CategoryAdapter
     @Inject
     lateinit var sessionManager: SessionManager
 
@@ -56,7 +57,7 @@ class ViewCategoryListFragment: BaseFragment<FragmentViewCategoryListBinding, Ho
         getViewDataBinding().fabAdd.setOnClickListener {
             findNavController().navigate(ViewCategoryListFragmentDirections.actionViewCategoryListFragmentToAddCategoryFragment())
         }
-        adapter.open = {id,category->
+        adapter.openCategory = {id,category->
             findNavController().navigate(ViewCategoryListFragmentDirections.actionViewCategoryListFragmentToProductListFragment(id))
         }
         adapter.option = { model ->

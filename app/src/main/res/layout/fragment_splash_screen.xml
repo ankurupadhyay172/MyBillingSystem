@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/myblue">
+        android:background="@color/appBgColor">
 
         <ImageView
             android:id="@+id/ivIcon"
@@ -22,7 +22,7 @@
             android:paddingBottom="@dimen/_18sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/appicon" />
+            android:src="@drawable/nlogo" />
 
         <TextView
             android:id="@+id/tvTitle"

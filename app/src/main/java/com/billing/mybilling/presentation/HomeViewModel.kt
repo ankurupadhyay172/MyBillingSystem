@@ -19,6 +19,7 @@ import com.billing.mybilling.database.DatabaseManager
 import com.billing.mybilling.database.TempCart
 import com.billing.mybilling.utils.AnalyticsType
 import com.billing.mybilling.utils.LoadingState
+import com.billing.mybilling.utils.PaymentType
 import com.billing.mybilling.utils.toLoadingState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -44,11 +45,21 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
     var pendingOrders:PendingOrders? = null
     val isPaymentOnline = MutableLiveData(pendingOrders?.payment_type!=1)
+    var finalAmount = "0"
+
 
     fun updatePaymentType(type:Boolean){
         val paymentType = if(type) 0 else 1
         pendingOrders?.payment_type = paymentType
         isPaymentOnline.postValue(type)
+
+        if(paymentType==PaymentType.ONLINE.type){
+            pendingOrders?.receiveOnline = finalAmount
+            pendingOrders?.receiveCash = "0"
+        }else{
+            pendingOrders?.receiveOnline = "0"
+            pendingOrders?.receiveCash = finalAmount
+        }
     }
 
     val totalAmount = MutableLiveData(0)
@@ -136,8 +147,15 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
         }
     }
 
-    fun createOrder(addOrderModel: AddOrderModel) = liveData(Dispatchers.IO) {
-        homeRepository.createOrder(addOrderModel).toLoadingState().catch {  }.collect{
+
+    fun createMyOrder(addOrderModel: AddOrderModel) = liveData(Dispatchers.IO) {
+        homeRepository.createMyOrder(addOrderModel).toLoadingState().catch {  }.collect{
+            emit(it)
+        }
+    }
+
+    fun readTable(commonRequestModel: CommonRequestModel) = liveData(Dispatchers.IO) {
+        homeRepository.readTable(commonRequestModel).toLoadingState().catch {  }.collect{
             emit(it)
         }
     }

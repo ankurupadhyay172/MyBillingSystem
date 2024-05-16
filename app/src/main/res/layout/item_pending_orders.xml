@@ -13,6 +13,7 @@
         android:layout_marginEnd="16.7dp"
         android:layout_marginBottom="16.7dp"
         app:cardCornerRadius="10dp"
+
         app:cardElevation="6.7dp">
 
         <LinearLayout
@@ -22,7 +23,7 @@
             android:orientation="horizontal"
             android:paddingStart="15dp"
             android:paddingTop="15dp"
-            android:background="@color/white"
+            android:background="@color/itemBgColor"
             android:paddingEnd="11.7dp"
             android:paddingBottom="15dp">
 

@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">My Billing</string>
+    <string name="app_name">Easy Bill</string>
     <string name="rupee">₹</string>
+    <string name="Rs">\u20B9</string>
     <string name="default_notification_channel_id">newOrder</string>
     <string-array name="filter_options">
         <item>day by day</item>

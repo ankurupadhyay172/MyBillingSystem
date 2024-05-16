@@ -27,44 +27,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16.7dp"
-                    android:layout_marginTop="23.3dp"
-                    android:fontFamily="@font/sf_pro_display_semibold"
-                    android:includeFontPadding="false"
-                    android:text="Table No."
-                    android:textColor="@color/black_25303c"
-                    android:textSize="16.7sp" />
-
-
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginRight="16dp"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/edtTableNo"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/sf_pro_display_regular"
-                        android:hint="Write Table No"
-                        android:textColor="@color/grey_828990"
-                        android:textSize="15sp" />
+                    android:padding="10dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/search"
+                    app:spanCount="3"
+                    tools:listitem="@layout/item_table" />
 
 
-                </LinearLayout>
+
 
 
                 <TextView

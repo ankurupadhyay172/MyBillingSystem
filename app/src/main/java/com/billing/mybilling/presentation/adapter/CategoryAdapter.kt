@@ -13,6 +13,7 @@ import javax.inject.Inject
 
 class CategoryAdapter @Inject constructor(): BaseListAdapter<Category,ItemCategoryBinding>(DiffCallback()) {
     var open:((id:String?)->Unit)? = null
+    var openCategory:((id:String?,order: Category?)->Unit)? = null
     var option:((category:Category?)->Unit)? = null
     
 
@@ -36,6 +37,7 @@ class CategoryAdapter @Inject constructor(): BaseListAdapter<Category,ItemCatego
         binding.ivMain.setImage(item?.image)
         binding.liCategory.setOnClickListener {
             open?.invoke(item?.category_id)
+            openCategory?.invoke(item?.category_id,item)
         }
 
         binding.liCategory.setOnLongClickListener {

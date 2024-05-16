@@ -24,6 +24,9 @@
     <color name="silver_909397">#909397</color>
     <color name="bg_fafafa">#fafafa</color>
     <color name="myblue">#255bac</color>
+    <color name="appBaseColor">#b33c34</color>
+    <color name="appBgColor">#eae7e2</color>
+    <color name="itemBgColor">#ece3e3</color>
 
     <color name="black_bg">#21272E</color>
     <color name="light_white">#fff8f9</color>
@@ -42,5 +45,5 @@
     <color name="root_green">#008F6A</color>
     <color name="root_yellow">#F6D522</color>
     <color name="bluePrimary">#6cd0e6</color>
-
+    <color name="light_green">#90EE90</color>
 </resources>

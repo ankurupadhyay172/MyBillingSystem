@@ -51,7 +51,7 @@
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:paddingVertical="6dp"
-                android:text="Get the latest content and the best deal in your inbox every day!"
+
                 android:textColor="@android:color/holo_red_light"
                 android:textSize="10dp"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -81,8 +81,14 @@ class HomeRepository @Inject constructor(val homeApiService: HomeApiService,val 
         emit(response)
     }
 
-    suspend fun createOrder(addOrderModel: AddOrderModel):Flow<CommonResponseModel> = flow {
-        val response = homeApiService.createOrder(addOrderModel)
+
+    suspend fun createMyOrder(addOrderModel: AddOrderModel):Flow<OrderResponseModel> = flow {
+        val response = homeApiService.createMyOrder(addOrderModel)
+        emit(response)
+    }
+
+    suspend fun readTable(commonRequestModel: CommonRequestModel):Flow<TableResponseModel> = flow {
+        val response = homeApiService.readTable(commonRequestModel)
         emit(response)
     }
 

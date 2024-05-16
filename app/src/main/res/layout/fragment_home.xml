@@ -23,7 +23,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/appBgColor"
         tools:context=".MainActivity">
 
 
@@ -37,6 +37,7 @@
 
 
             <LinearLayout
+                android:id="@+id/topLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rect_blue_botom_cure"
@@ -150,11 +151,11 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="@font/sfuidisplay_medium"
-                            android:text="Manage Users"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Manage Staff"
                             android:gravity="center"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_8sdp" />
+                            android:textSize="@dimen/_11sdp" />
 
 
                     </LinearLayout>
@@ -177,11 +178,11 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="@font/sfuidisplay_medium"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="All Orders"
                             android:textAlignment="center"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_8sdp" />
+                            android:textSize="@dimen/_11sdp" />
 
                     </LinearLayout>
 
@@ -216,11 +217,11 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="@font/sfuidisplay_medium"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="Manage Product"
                             android:textAlignment="center"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_8sdp" />
+                            android:textSize="@dimen/_11sdp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -241,10 +242,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="@font/sfuidisplay_medium"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="Contact Us"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_8sdp" />
+                            android:textSize="@dimen/_11sdp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -266,6 +267,13 @@
                     android:visibility="@{error==null?visibility.GONE:visibility.VISIBLE}"
                     bind:error="@{error.toString()}"
                     layout="@layout/layout_loading"/>
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/topLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
                 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                     android:id="@+id/swipeToRefresh"
                     app:layout_constraintStart_toStartOf="parent"

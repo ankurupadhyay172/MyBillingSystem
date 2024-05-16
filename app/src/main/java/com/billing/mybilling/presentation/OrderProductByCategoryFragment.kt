@@ -12,6 +12,7 @@ import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.billing.mybilling.BR
 import com.billing.mybilling.R
@@ -56,6 +57,9 @@ class OrderProductByCategoryFragment: BaseFragment<FragmentOrderProductByCategor
                 }
             }
 
+        getViewDataBinding().submit.setOnClickListener {
+            findNavController().navigate(OrderProductByCategoryFragmentDirections.actionOrderProductByCategoryFragmentToPendingOrdersDetailsFragment(homeViewModel.pendingOrders?.order_id))
+        }
 
         adapter.open = {it,type->
             it?.product_order_id = homeViewModel.pendingOrders?.order_id

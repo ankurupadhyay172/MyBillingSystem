@@ -9,7 +9,9 @@
 
 
 
+
     <application
+        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:name=".App"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -23,6 +25,15 @@
 
         <service android:name=".test.DataFetchService"/>
 
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_notification_bell" />

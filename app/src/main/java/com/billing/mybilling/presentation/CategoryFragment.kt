@@ -33,7 +33,7 @@ class CategoryFragment: BaseFragment<FragmentCategoryBinding,HomeViewModel>() {
         super.onViewCreated(view, savedInstanceState)
 
         getViewDataBinding().rvCategory.adapter = adapter
-
+//        showToast(""+homeViewModel.pendingOrders?.order_id)
         //updateCategory()
         getCategoryFromDatabase()
         getViewDataBinding().search.setOnClickListener {
@@ -42,14 +42,14 @@ class CategoryFragment: BaseFragment<FragmentCategoryBinding,HomeViewModel>() {
         getViewDataBinding().edtSearch.setOnClickListener {
             findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToSearchProductFragment(homeViewModel.pendingOrders?.order_id))
         }
-
+        showToast(""+homeViewModel.pendingOrders?.tableId)
 //        lifecycleScope.launch {
 //            homeViewModel.getCategoryList()
 //        }
 
-//        databaseManager.getCategoriesLive().observe(viewLifecycleOwner){
-//            adapter.submitList(it)
-//        }
+        databaseManager.getCategoriesLive().observe(viewLifecycleOwner){
+            adapter.submitList(it)
+        }
 
         adapter.open = {
             //findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToSearchProductFragment())
