@@ -60,7 +60,7 @@
 
     </style>
     <style name="AddButton">
-        <item name="colorPrimary">@color/myblue</item>
+        <item name="colorPrimary">@color/appBaseColor</item>
     </style>
     <style name="CancelButton" parent="Widget.AppCompat.Button">
         <item name="colorPrimary">@color/jffbg</item>
@@ -69,5 +69,10 @@
     <style name="WhatsAppButton" parent="Widget.AppCompat.Button">
         <item name="colorPrimary">@color/green</item>
         <item name="android:drawableStart">@drawable/whatsapp</item>
+        <item name="android:drawablePadding">@dimen/_12sdp</item>
+    </style>
+
+    <style name="CheckoutButton" parent="Widget.AppCompat.Button">
+        <item name="colorPrimary">@color/itemBgColor2</item>
     </style>
 </resources>

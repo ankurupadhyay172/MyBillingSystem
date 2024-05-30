@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="image"
+            type="String" />
+    </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/appBgColor">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:background="@color/appBaseColor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:weightSum="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:id="@+id/imgBack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toStartOf="@+id/left_arrow"
+                        android:src="@drawable/back_black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:tint="@color/white" />
+
+
+                    <ImageView
+                        android:id="@+id/left_arrow"
+                        android:layout_weight="2"
+                        app:layout_constraintEnd_toStartOf="@+id/tvTitle"
+                        app:layout_constraintStart_toEndOf="@+id/imgBack"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:src="@drawable/ic_baseline_arrow_left_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:fontFamily="@font/sf_pro_display_semibold"
+                        android:gravity="center"
+                        android:paddingStart="16.7dp"
+                        android:paddingTop="19dp"
+                        android:paddingBottom="19dp"
+                        android:text="Entry Details"
+                        android:textColor="@color/white"
+                        android:textSize="18.3sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/left_arrow"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <ImageView
+                        android:id="@+id/right_arrow"
+                        android:visibility="gone"
+                        android:layout_weight="2"
+                        android:src="@drawable/ic_baseline_arrow_right_24"
+                        app:layout_constraintEnd_toStartOf="@+id/imgFilter"
+                        app:layout_constraintStart_toEndOf="@+id/tvTitle"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent" />
+
+                    <FrameLayout
+                        android:visibility="gone"
+                        android:id="@+id/date_filter"
+                        app:layout_constraintStart_toEndOf="@+id/right_arrow"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="2"
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:paddingLeft="11dp"
+                        android:paddingTop="9dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="9dp">
+
+                        <ImageView
+                            android:visibility="gone"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_calendar"
+                            app:tint="@color/white" />
+
+                        <Spinner
+                            android:id="@+id/orderFilter"
+                            android:visibility="gone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+
+                        <TextView
+                            android:visibility="gone"
+                            android:layout_marginRight="20dp"
+                            android:id="@+id/notification_badge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/circle_red"
+                            android:fontFamily="@font/sf_pro_display_medium"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="@color/white"
+                            android:textSize="10sp" />
+
+                    </FrameLayout>
+
+                    <ImageView
+                        android:id="@+id/imgFilter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:visibility="gone"
+                        android:src="@drawable/baseline_filter_alt_32"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/attendance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/appBaseColor"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                android:padding="@dimen/_10sdp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/imgOnlinePayment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Present"
+                    android:textColor="@color/white"
+                    android:src="@drawable/ic_up_arrow_in_circular_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/online_payment"
+                    app:layout_constraintEnd_toEndOf="@+id/online_payment"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtTotalSales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:text="Total Attendance"
+                    app:layout_constraintStart_toEndOf="@+id/imgOnlinePayment"
+                    app:layout_constraintEnd_toStartOf="@+id/imgCashPayment"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:letterSpacing="0.0625"
+                    android:textColor="@color/white"
+                    android:textSize="11.5sp" />
+
+                <TextView
+                    android:id="@+id/imgCashPayment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="On Leave"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/cash_payment"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/cash_payment"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_down_arrow_in_circular_button" />
+
+
+                <TextView
+                    android:id="@+id/online_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/total_amount"
+                    app:layout_constraintTop_toBottomOf="@+id/imgOnlinePayment"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:text=""
+                    android:letterSpacing="0.0625"
+                    android:textColor="@color/white"
+                    android:textSize="11.5sp" />
+
+                <TextView
+                    android:id="@+id/total_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTotalSales"
+                    app:layout_constraintStart_toStartOf="@+id/txtTotalSales"
+                    app:layout_constraintEnd_toEndOf="@+id/txtTotalSales"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="27.3sp" />
+
+                <TextView
+                    android:id="@+id/cash_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/total_amount"
+                    app:layout_constraintTop_toBottomOf="@+id/imgCashPayment"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:text=""
+                    android:letterSpacing="0.0625"
+                    android:textColor="@color/white"
+                    android:textSize="11.5sp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAttendance"
+                app:layout_constraintTop_toBottomOf="@+id/attendance"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
+
+

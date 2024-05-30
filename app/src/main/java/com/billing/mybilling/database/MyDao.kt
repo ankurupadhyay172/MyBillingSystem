@@ -30,6 +30,9 @@ interface MyDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addDeliveredOrder(orders: List<PendingOrders>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addStaffAttendance(attendance: List<Attendance>)
+
     @Query("select * from `pendingorders` where strftime('%d',datetime(timeLong/1000, 'unixepoch'))= strftime('%d',datetime(:today/1000, 'unixepoch'))  order by timeLong DESC")
     fun getAllDeliveredOrdersByDate(today: Date):LiveData<List<PendingOrders>>
 
@@ -38,6 +41,12 @@ interface MyDao {
 
     @Query("SELECT * FROM `pendingorders` WHERE datetime(datetime(timeLong/1000, 'unixepoch'),'start of year') = datetime(:today/1000,'unixepoch','start of year') order by timestamp DESC")
     fun getAllOrdersByYear(today:Date):LiveData<List<PendingOrders>>
+
+    @Query("SELECT * FROM `attendance` where tapInTimeLong between :start and :end and user_id=:id order by tapInTimeLong DESC")
+    fun getAllAttendanceByMonth(start: Long,end: Long,id: String?):LiveData<List<Attendance>>
+
+    @Query("SELECT * FROM `attendance` WHERE datetime(datetime(tapInTimeLong/1000, 'unixepoch'),'start of year') = datetime(:today/1000,'unixepoch','start of year') order by tapInTimeLong DESC")
+    fun getAllAttendanceByYear(today:Date):LiveData<List<Attendance>>
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -75,4 +84,5 @@ interface MyDao {
 
     @Query("DELETE FROM PendingOrders")
     suspend fun clearPendingOrders()
+
 }

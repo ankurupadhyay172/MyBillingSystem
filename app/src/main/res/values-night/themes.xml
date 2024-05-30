@@ -29,7 +29,7 @@
         <item name="colorPrimary">@color/jffbg</item>
     </style>
     <style name="AddButton">
-        <item name="colorPrimary">@color/myblue</item>
+        <item name="colorPrimary">@color/appBaseColor</item>
     </style>
     <style name="WhatsAppButton" parent="Widget.AppCompat.Button">
         <item name="colorPrimary">@color/green</item>

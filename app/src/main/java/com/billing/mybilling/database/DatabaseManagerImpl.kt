@@ -48,6 +48,12 @@ class DatabaseManagerImpl @Inject constructor(@ApplicationContext context: Conte
     }
 
 
+    override fun addStaffAttendance(list: List<Attendance>) {
+        CoroutineScope(Dispatchers.IO).launch {
+            db.getMyDataBaseDao().addStaffAttendance(list)
+        }
+    }
+
 
     override fun getVariantsLive(id:String?): LiveData<List<Variants>> {
         return db.getMyDataBaseDao().getAllVariants(id)
@@ -71,8 +77,22 @@ class DatabaseManagerImpl @Inject constructor(@ApplicationContext context: Conte
         return db.getMyDataBaseDao().getAllOrdersByMonth(start.time.time,end.time.time)
     }
 
+    override fun getSingleStaffAttendanceByMonth( today: Date,id:String?): LiveData<List<Attendance>> {
+        val format = SimpleDateFormat("yyyy").format(today)
+        val start = Calendar.getInstance()
+        start.set(format.toInt(),today.month,1)
+        val end = Calendar.getInstance()
+        val endDay = Common.lastDayOfMonth(format.toInt(),today.month+1)
+        end.set(format.toInt(),today.month,endDay+1)
+        return db.getMyDataBaseDao().getAllAttendanceByMonth(start.time.time,end.time.time,id)
+    }
+
     override fun getAllOrdersByYear( today: Date): LiveData<List<PendingOrders>> {
         return db.getMyDataBaseDao().getAllOrdersByYear(today)
+    }
+
+    override fun getSingleStaffAttendanceByYear( today: Date): LiveData<List<Attendance>> {
+        return db.getMyDataBaseDao().getAllAttendanceByYear(today)
     }
 
 

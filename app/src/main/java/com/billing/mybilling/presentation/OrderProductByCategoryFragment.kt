@@ -64,9 +64,18 @@ class OrderProductByCategoryFragment: BaseFragment<FragmentOrderProductByCategor
         adapter.open = {it,type->
             it?.product_order_id = homeViewModel.pendingOrders?.order_id
             it?.business_id = sessionManager.getUser()?.business_id
-            homeViewModel.updateOrderProduct(type,it!!).observe(viewLifecycleOwner){
-                it.getValueOrNull()?.let {
-                    showToast(""+it.result)
+            showLoading(true)
+            homeViewModel.updateOrderProduct(type,it!!).observe(viewLifecycleOwner){state->
+                state.getValueOrNull()?.let {result->
+//                    showToast(""+it.result)
+                    showLoading(false)
+                    if (result.status==1){
+                        if (result.result!="0"){
+                            it.id = result.result.toInt()
+                        }
+                    }else{
+                        showToast("Something went wrong")
+                    }
                 }
             }
         }

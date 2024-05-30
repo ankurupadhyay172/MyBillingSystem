@@ -19,6 +19,18 @@
         <item >Delete </item>
     </string-array>
 
+    <string-array name="saleFilterOptions">
+        <item >Day by day</item>
+        <item >Month by month </item>
+        <item >Year by year </item>
+    </string-array>
+
+    <string-array name="attendanceFilterOptions">
+
+        <item >Month by month </item>
+        <item >Year by year </item>
+    </string-array>
+
     <string name="something_went_wrong_error">Something Went Wrong</string>
     <string name="error_network" translatable="false">A network error has occurred.Please try again.</string>
     <string name="title_retry">Retry</string>

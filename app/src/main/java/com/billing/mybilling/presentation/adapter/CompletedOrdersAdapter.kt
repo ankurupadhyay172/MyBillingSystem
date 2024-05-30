@@ -10,12 +10,14 @@ import com.billing.mybilling.data.model.response.PendingOrders
 import com.billing.mybilling.databinding.ItemCompletedOrdersBinding
 import com.billing.mybilling.databinding.ItemPendingOrdersBinding
 import com.billing.mybilling.utils.OrderStatus
+import com.billing.mybilling.utils.OrderType
 import com.billing.mybilling.utils.setOrderStatus
 import com.billing.mybilling.utils.setPrice
 import javax.inject.Inject
 
 class CompletedOrdersAdapter @Inject constructor(): BaseListAdapter<PendingOrders,ItemCompletedOrdersBinding>(DiffCallback()) {
     var open:((id:String?,order:PendingOrders?)->Unit)? = null
+    var contactPerson:((contact:String?)->Unit)? = null
 
     class DiffCallback: DiffUtil.ItemCallback<PendingOrders>(){
         override fun areItemsTheSame(oldItem: PendingOrders, newItem: PendingOrders): Boolean {
@@ -34,15 +36,21 @@ class CompletedOrdersAdapter @Inject constructor(): BaseListAdapter<PendingOrder
 
     override fun bind(binding: ItemCompletedOrdersBinding, item: PendingOrders?) {
        binding.userName.text = item?.customer_name
-        binding.price.text = item?.formatDateToTimeAgo()
+        binding.price.text = item?.customer_contact
         binding.userDetail.text = item?.getTotalAmount().toString().setPrice()
         binding.orderStatus.text = "Status : "+item?.order_status?.setOrderStatus()
-       item?.order_status?.let {
-           if (it==OrderStatus.FAILED.status){
-               binding.userImage.setImageResource(R.drawable.cancel)
-           }else{
-               binding.userImage.setImageResource(R.drawable.check)
-           }
+        item?.order_on?.let {
+            when(it){
+                OrderType.TABLE.type-> binding.userImage.setImageResource(R.drawable.table)
+                OrderType.PACKING.type-> binding.userImage.setImageResource(R.drawable.packing)
+                OrderType.ZOMATO.type-> binding.userImage.setImageResource(R.drawable.zomato)
+                OrderType.SWIGGY.type-> binding.userImage.setImageResource(R.drawable.swiggy)
+            }
+
+        }
+
+       binding.price.setOnClickListener {
+           contactPerson?.invoke(item?.customer_contact)
        }
 
        binding.liOrder.setOnClickListener {

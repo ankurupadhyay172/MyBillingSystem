@@ -5,8 +5,11 @@
 
     <data>
         <variable
+            name="orderType"
+            type="com.billing.mybilling.utils.OrderType" />
+        <variable
             name="isTable"
-            type="Boolean" />
+            type="String" />
         <variable
             name="fragment"
             type="com.billing.mybilling.presentation.AddOrderFragment" />
@@ -34,19 +37,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvTable"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/search"
-                    app:spanCount="3"
-                    tools:listitem="@layout/item_table" />
 
 
 
@@ -166,11 +156,11 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:onClick="@{()->fragment.onTableClick()}"
-                            android:src="@{isTable?@drawable/ic_radio:@drawable/circle_radio}" />
+                            android:src="@{@drawable/ic_radio}"/>
                     </LinearLayout>
 
                     <LinearLayout
-                        android:backgroundTint="@color/green"
+                        android:backgroundTint="@color/packingColor"
                         android:id="@+id/liPacking"
                         android:layout_weight="1"
                         android:layout_width="0dp"
@@ -201,9 +191,108 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:onClick="@{()->fragment.onPackingClick()}"
-                            android:src="@{isTable?@drawable/circle_radio:@drawable/ic_radio}" />
+                            android:src="@{@drawable/circle_radio}"/>
                     </LinearLayout>
+
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_alignBottom="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16.2dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:backgroundTint="@color/orange"
+                        android:id="@+id/liSwiggy"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_gray_boxprofile"
+                        android:orientation="horizontal"
+                        android:paddingLeft="17dp"
+                        android:paddingTop="18dp"
+                        android:paddingRight="13dp"
+                        android:layout_marginRight="7.5dp"
+                        android:onClick="@{()->fragment.onSwiggyClick()}"
+                        android:paddingBottom="18dp">
+
+                        <TextView
+                            android:id="@+id/tvSwiggy"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/sf_pro_display_semibold"
+                            android:text="Swiggy"
+                            android:drawableStart="@drawable/swiggy"
+                            android:onClick="@{()->fragment.onSwiggyClick()}"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/imgSwiggy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:onClick="@{()->fragment.onSwiggyClick()}"
+                            android:src="@{@drawable/circle_radio}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:backgroundTint="@color/red"
+                        android:id="@+id/liZomato"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_gray_boxprofile"
+                        android:orientation="horizontal"
+                        android:paddingLeft="17dp"
+                        android:paddingTop="18dp"
+                        android:paddingRight="13dp"
+                        android:layout_marginLeft="7.5dp"
+                        android:onClick="@{()->fragment.onZomatoClick()}"
+                        android:paddingBottom="18dp">
+
+                        <TextView
+                            android:id="@+id/tvZomato"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawableStart="@drawable/zomato"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:fontFamily="@font/sf_pro_display_semibold"
+                            android:onClick="@{()->fragment.onZomatoClick()}"
+                            android:text="Zomato"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/imgZomato"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:onClick="@{()->fragment.onZomatoClick()}"
+                            android:src="@{@drawable/circle_radio}" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/search"
+                    app:spanCount="4"
+                    tools:listitem="@layout/item_table" />
+
 
                 <Button
                     android:id="@+id/checkout"

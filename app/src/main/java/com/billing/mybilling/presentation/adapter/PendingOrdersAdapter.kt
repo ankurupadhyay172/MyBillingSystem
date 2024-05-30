@@ -37,11 +37,25 @@ class PendingOrdersAdapter @Inject constructor(): BaseListAdapter<PendingOrders,
         binding.orderStatus.text = "Status : "+item?.order_status?.setOrderStatus()
 //        binding.userDetail.text = item?.getOrderType()
 
-        if (item?.order_on== OrderType.TABLE.type){
-            binding.userDetail.text = "Table No : ${item.table_no}"
-        }else{
-            binding.userDetail.text = "Packing"
+        when(item?.order_on){
+            OrderType.TABLE.type-> binding.liOrder.setBackgroundResource(R.color.appcolor)
+            OrderType.PACKING.type-> binding.liOrder.setBackgroundResource(R.color.light_green)
+            OrderType.ZOMATO.type-> binding.liOrder.setBackgroundResource(R.color.red)
+            OrderType.SWIGGY.type-> binding.liOrder.setBackgroundResource(R.color.orange)
         }
+
+
+
+
+            val orderType = when(item?.order_on){
+                OrderType.TABLE.type->"Table No : ${item.table_no}"
+                OrderType.PACKING.type -> "Packing"
+                OrderType.ZOMATO.type -> "Zomato"
+                OrderType.SWIGGY.type -> "Swiggy"
+                else->""
+            }
+            binding.userDetail.text = orderType
+
 
 
         binding.price.text = item?.formatDateToTimeAgo()

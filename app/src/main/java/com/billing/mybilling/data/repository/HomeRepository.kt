@@ -53,6 +53,11 @@ class HomeRepository @Inject constructor(val homeApiService: HomeApiService,val 
     }
 
 
+    suspend fun getBusinessDetail(commonRequestModel: CommonRequestModel):Flow<BusinessResponseModel> = flow {
+        val response = homeApiService.getBusinessDetail(commonRequestModel)
+        emit(response)
+    }
+
     suspend fun getProductsFromDatabase(commonRequestModel: CommonRequestModel){
         val response = homeApiService.getProducts(commonRequestModel)
         if (response.status==1)
@@ -103,8 +108,20 @@ class HomeRepository @Inject constructor(val homeApiService: HomeApiService,val 
         databaseManager.addDelivered(response.result)
     }
 
+    suspend fun getSingleStaffAttendance(commonRequestModel: CommonRequestModel){
+        val response = homeApiService.getSingleStaffAttendance(commonRequestModel)
+        if (response.status==1)
+            databaseManager.addStaffAttendance(response.result)
+    }
+
+
     suspend fun updatePendingOrder(type:String,pendingOrders: PendingOrders?):Flow<CommonResponseModel> = flow {
         val response = homeApiService.updatePendingOrder(type,pendingOrders)
+        emit(response)
+    }
+
+    suspend fun completeOrder(pendingOrders: PendingOrders?):Flow<CommonResponseModel> = flow {
+        val response = homeApiService.completeOrder(pendingOrders)
         emit(response)
     }
 
@@ -120,6 +137,16 @@ class HomeRepository @Inject constructor(val homeApiService: HomeApiService,val 
 
     suspend fun updateUsers(type:String,users: Users?):Flow<CommonResponseModel> = flow {
         val response = homeApiService.updateUsers(type,users)
+        emit(response)
+    }
+
+    suspend fun readStaffAttendance(commonRequestModel: CommonRequestModel):Flow<StaffAttendanceResponseModel> = flow {
+        val response = homeApiService.readStaffAttendance(commonRequestModel)
+        emit(response)
+    }
+
+    suspend fun manageStaffAttendance(type:String,attendanceModel: StaffAttendanceModel?):Flow<CommonResponseModel> = flow {
+        val response = homeApiService.manageStaffAttendance(type,attendanceModel)
         emit(response)
     }
 }

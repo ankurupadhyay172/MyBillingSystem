@@ -11,7 +11,7 @@ data class ProductsResponseModel(val status: Int,val result: List<Products>)
 data class Products(
     @PrimaryKey(autoGenerate = false)
     @NotNull
-    var pid: String,val id:Int,val category_id:String,val isNonVeg:Int,val product_name: String,val product_image: String,val timestamp: String,
+    var pid: String,var id:Int,val category_id:String,val isNonVeg:Int,val product_name: String,val product_image: String,val timestamp: String,
     @Nullable
     val vid: String?,val variant_name: String?,val variant_image: String?,val description: String?,val price: String?,var selected_quan: Int,var product_order_id:String?,var business_id:String?){
     fun incrementCounter():Int{

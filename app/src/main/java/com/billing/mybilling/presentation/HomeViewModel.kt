@@ -36,7 +36,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val homeRepository: HomeRepository,val databaseManager: DatabaseManager):BaseViewModel() {
 
-
+    val yearName = arrayOf("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec")
     var analyticsType = MutableLiveData(Calendar.getInstance().time)
     val instance: Calendar = Calendar.getInstance()
     var filterValue = MutableLiveData(AnalyticsType.DayByDay.type)
@@ -46,7 +46,6 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
     var pendingOrders:PendingOrders? = null
     val isPaymentOnline = MutableLiveData(pendingOrders?.payment_type!=1)
     var finalAmount = "0"
-
 
     fun updatePaymentType(type:Boolean){
         val paymentType = if(type) 0 else 1
@@ -97,6 +96,13 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
     fun getVariants(commonRequestModel: CommonRequestModel) = liveData(Dispatchers.IO){
         homeRepository.getVariants(commonRequestModel).toLoadingState().catch {  }.collect{
+            emit(it)
+        }
+    }
+
+
+    fun getBusinessDetail(commonRequestModel: CommonRequestModel) = liveData(Dispatchers.IO){
+        homeRepository.getBusinessDetail(commonRequestModel).toLoadingState().catch {  }.collect{
             emit(it)
         }
     }
@@ -170,8 +176,18 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
         homeRepository.getCompletedOrders(commonRequestModel)
     }
 
+    suspend fun getSingleStaffAttendance(commonRequestModel: CommonRequestModel)  {
+        homeRepository.getSingleStaffAttendance(commonRequestModel)
+    }
+
     fun updatePendingOrder(type: String,pendingOrders: PendingOrders?) = liveData(Dispatchers.IO) {
         homeRepository.updatePendingOrder(type,pendingOrders).toLoadingState().catch {  }.collect{
+            emit(it)
+        }
+    }
+
+    fun completeOrder(pendingOrders: PendingOrders?) = liveData(Dispatchers.IO) {
+        homeRepository.completeOrder(pendingOrders).toLoadingState().catch {  }.collect{
             emit(it)
         }
     }
@@ -190,6 +206,18 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
     fun updateUsers(type:String,users: Users?) = liveData(Dispatchers.IO) {
         homeRepository.updateUsers(type,users).toLoadingState().catch {  }.collect{
+            emit(it)
+        }
+    }
+
+    fun readStaffAttendance(commonRequestModel: CommonRequestModel) = liveData(Dispatchers.IO) {
+        homeRepository.readStaffAttendance(commonRequestModel).toLoadingState().catch {  }.collect{
+            emit(it)
+        }
+    }
+
+    fun manageStaffAttendance(type:String,attendanceModel: StaffAttendanceModel?) = liveData(Dispatchers.IO) {
+        homeRepository.manageStaffAttendance(type,attendanceModel).toLoadingState().catch {  }.collect{
             emit(it)
         }
     }
@@ -240,8 +268,7 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
     fun decrementCounter() {
         filterValue.value?.let {
-            when(it)
-            {
+            when(it) {
                 AnalyticsType.DayByDay.type->instance.add(Calendar.DATE, -1)
                 AnalyticsType.MonthByMonth.type->instance.add(Calendar.MONTH, -1)
                 AnalyticsType.YearByYear.type->instance.add(Calendar.YEAR, -1)

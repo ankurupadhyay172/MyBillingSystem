@@ -19,7 +19,7 @@
 
 
 
-            <TextView
+            <ImageView
                 android:id="@+id/tvWelcome"
                 style="@style/TvRegular"
                 android:layout_width="match_parent"
@@ -29,6 +29,7 @@
                 android:paddingVertical="6dp"
                 tools:text="This is warning"
                 android:text="Warning"
+                android:src="@drawable/baseline_warning_24"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +74,7 @@
                 android:layout_height="36dp"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="32dp"
-                android:background="@drawable/ic_background_capsule_black"
+                android:background="@drawable/ic_background_capsule_green"
                 android:paddingHorizontal="30dp"
                 android:text="yes"
                 android:textAllCaps="true"
@@ -89,7 +90,7 @@
                 android:layout_height="36dp"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="32dp"
-                android:background="@drawable/ic_background_capsule_black"
+                android:background="@drawable/ic_background_capsule_red"
                 android:paddingHorizontal="30dp"
                 android:text="No"
                 android:textAllCaps="true"

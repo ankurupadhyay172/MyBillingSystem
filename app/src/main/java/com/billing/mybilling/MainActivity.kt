@@ -1,6 +1,8 @@
 package com.billing.mybilling
 
 import android.Manifest
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 
 import android.os.Bundle
@@ -13,6 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -20,10 +23,17 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.billing.mybilling.base.BaseActivity
+import com.billing.mybilling.data.model.request.CommonRequestModel
+import com.billing.mybilling.database.DatabaseManager
+import com.billing.mybilling.presentation.HomeViewModel
 import com.billing.mybilling.session.SessionManager
+import com.billing.mybilling.utils.ActiveStatus
 import com.billing.mybilling.utils.PageConfiguration
+import com.billing.mybilling.utils.showForceWarningDialog
+import com.billing.mybilling.utils.showWarningDialog
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.RemoteMessage
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -38,6 +48,10 @@ class MainActivity : BaseActivity() {
 
     @Inject
     lateinit var sessionManager: SessionManager
+    @Inject
+    lateinit var databaseManager: DatabaseManager
+    @Inject
+    lateinit var homeViewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +70,29 @@ class MainActivity : BaseActivity() {
         }
 
         requestPermission()
+        checkBusinessDetail()
 
+    }
+
+    private fun checkBusinessDetail() {
+        val number = "+919664206361"
+        homeViewModel.getBusinessDetail(CommonRequestModel(sessionManager.getUser()?.business_id)).observe(this) {
+            it.getValueOrNull()?.let {
+                if (it.status==1){
+                    if (it.result.active_status == ActiveStatus.ACTIVE.type){
+                       val dialog = showForceWarningDialog(this,layoutInflater,"Please renew your subscriontion") {
+                           val url = "https://api.whatsapp.com/send?phone=$number"
+                           val i = Intent(Intent.ACTION_VIEW)
+                           i.data = Uri.parse(url)
+                           startActivity(i)
+                        }
+                        dialog.setCancelable(false)
+                        dialog.show()
+                    }
+                }
+            }
+
+        }
     }
 
 
@@ -70,10 +106,12 @@ class MainActivity : BaseActivity() {
         when(item.itemId){
         R.id.logout->{
             sessionManager.deleteUser()
+            databaseManager.clearPendingOrders()
             while (navigationController.navigateUp()){navigationController.popBackStack()}
             unSubscribeToTopic()
             Toast.makeText(this, "Logout Successfully", Toast.LENGTH_SHORT).show()
             navigationController.navigate(R.id.loginFragment)
+
 
         }
         }

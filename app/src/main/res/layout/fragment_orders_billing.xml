@@ -653,14 +653,20 @@ Sat,Sun : 11:00am to 05:00pm "
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
+                    <ImageView
+                        android:id="@+id/imgQrCode"
+                        android:layout_gravity="center"
+                        android:layout_width="@dimen/_200sdp"
+                        android:layout_height="@dimen/_200sdp"/>
+
 
                     <Button
                         android:id="@+id/checkout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_15sdp"
                         android:background="@drawable/rectangle_green"
                         android:fontFamily="@font/sf_pro_display_bold"
                         android:text="Complete Order"
@@ -668,17 +674,24 @@ Sat,Sun : 11:00am to 05:00pm "
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
+
+
+
+
+
                     <TextView
                         android:id="@+id/checkoutAndShare"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_15sdp"
+                        android:layout_marginLeft="@dimen/_15sdp"
                         android:theme="@style/WhatsAppButton"
-                        app:icon="@drawable/whatsapp2"
-                        android:onClick="@{()->fragment.completeCheckout(true)}"
-                        android:backgroundTint="@color/green"
+                        app:icon="@drawable/whatsapp3"
+                        android:drawablePadding="@dimen/_12sdp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/rectangle_green"
+                        android:backgroundTint="@color/appBaseColor"
                         android:fontFamily="@font/sf_pro_display_bold"
                         android:text="Complete and Share "
                         android:textColor="@color/white"

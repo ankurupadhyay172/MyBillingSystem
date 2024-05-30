@@ -1,5 +1,13 @@
 package com.billing.mybilling.utils
 
+
+enum class ActiveStatus(val type:Int){
+    ACTIVE(1),
+    INACTIVE(2)
+}
+
+
+
 enum class SelectedAction(val type:String){
     ADD("add"),
     UPDATE("update"),
@@ -7,9 +15,20 @@ enum class SelectedAction(val type:String){
     UPDATE_STATUS("update_status")
 }
 
+enum class AttendanceType(val type: Int){
+    PRESENT(1),
+    ABSENT(2),
+    HALF_DAY(3),
+    LEAVE(4),
+    HALF_DAY_LEAVE(5)
+}
+
+
 enum class OrderType(val type: String){
     TABLE("1"),
-    PACKING("2")
+    PACKING("2"),
+    SWIGGY("3"),
+    ZOMATO("4")
 }
 
 enum class editType(val type: String){
@@ -49,6 +68,8 @@ fun String.setOrderOn(): String {
     return when (this) {
         OrderType.PACKING.type -> "Packing"
         OrderType.TABLE.type->"Table"
+        OrderType.SWIGGY.type->"Swiggy"
+        OrderType.ZOMATO.type->"Zomato"
         else -> "Table"
     }
 }

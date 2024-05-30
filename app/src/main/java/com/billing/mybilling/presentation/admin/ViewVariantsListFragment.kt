@@ -41,18 +41,7 @@ class ViewVariantsListFragment : BaseFragment<FragmentProductListBinding, HomeVi
         showLoading(true)
 
 
-        homeViewModel.getVariants(CommonRequestModel(args.id)).observe(viewLifecycleOwner) {
-            it.getErrorIfExists()?.let {
-                showLoading(false)
-                getViewDataBinding().error = it.message
-            }
-            it.getValueOrNull()?.let {
-                showLoading(false)
-                adapter.submitList(it.result)
-                if (it.status == 0)
-                    getViewDataBinding().isEmpty = true
-            }
-        }
+       getVariantList()
 
         getViewDataBinding().fabAdd.setOnClickListener {
             findNavController().navigate(
@@ -76,11 +65,12 @@ class ViewVariantsListFragment : BaseFragment<FragmentProductListBinding, HomeVi
 
                         1 -> {
                             homeViewModel.addVariant(
-                                SelectedAction.ADD.type,
+                                SelectedAction.DELETE.type,
                                 AddVariantRequestModel(model?.vid)
                             ).observe(viewLifecycleOwner) {
                                 it.getValueOrNull()?.let {
                                     showToast("${it.result}")
+                                    getVariantList()
 
                                 }
                             }
@@ -89,6 +79,21 @@ class ViewVariantsListFragment : BaseFragment<FragmentProductListBinding, HomeVi
 
                 }.show()
 
+        }
+    }
+
+    private fun getVariantList() {
+        homeViewModel.getVariants(CommonRequestModel(args.id)).observe(viewLifecycleOwner) {
+            it.getErrorIfExists()?.let {
+                showLoading(false)
+                getViewDataBinding().error = it.message
+            }
+            it.getValueOrNull()?.let {
+                showLoading(false)
+                adapter.submitList(it.result)
+                if (it.status == 0)
+                    getViewDataBinding().isEmpty = true
+            }
         }
     }
 

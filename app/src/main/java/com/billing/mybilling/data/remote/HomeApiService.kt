@@ -30,6 +30,9 @@ interface HomeApiService {
     @POST("ReadVariants.php")
     suspend fun getVariants(@Body commonRequestModel: CommonRequestModel): VariantsResponseModel
 
+    @POST("ReadBusinessDetail.php")
+    suspend fun getBusinessDetail(@Body commonRequestModel: CommonRequestModel): BusinessResponseModel
+
     @POST("GetProductsPagination.php")
     suspend fun getAllProductsByPagination(@Query("page") page:Int): ProductsResponseModel
 
@@ -57,8 +60,14 @@ interface HomeApiService {
     @POST("ReadCompletedOrders.php")
     suspend fun getCompletedOrders(@Body commonRequestModel: CommonRequestModel):PendingOrdersResponseModel
 
+    @POST("ReadSingleStaffAttendance.php")
+    suspend fun getSingleStaffAttendance(@Body commonRequestModel: CommonRequestModel):SingleStaffResponseModel
+
     @POST("UpdatePendingOrder.php")
     suspend fun updatePendingOrder(@Query("type") type:String,@Body pendingOrders: PendingOrders?):CommonResponseModel
+
+    @POST("CompleteOrder.php")
+    suspend fun completeOrder(@Body pendingOrders: PendingOrders?):CommonResponseModel
 
     @POST("ReadPendingOrdersDetails.php")
     suspend fun getPendingOrdersProducts(@Body commonRequestModel: CommonRequestModel):PendingOrderDetailsResponseModel
@@ -68,4 +77,11 @@ interface HomeApiService {
 
     @POST("UpdateUsers.php")
     suspend fun updateUsers(@Query("type") type:String,@Body user: Users?): CommonResponseModel
+
+    @POST("ReadStaffAttendance.php")
+    suspend fun readStaffAttendance(@Body commonRequestModel: CommonRequestModel): StaffAttendanceResponseModel
+
+    @POST("AddAttendance.php")
+    suspend fun manageStaffAttendance(@Query("type") type:String,@Body staffAttendanceModel: StaffAttendanceModel?): CommonResponseModel
+
 }

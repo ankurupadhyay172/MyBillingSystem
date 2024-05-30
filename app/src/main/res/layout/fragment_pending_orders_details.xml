@@ -154,53 +154,53 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/submit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginRight="16dp"
-                        android:background="@drawable/rectangle_green"
+                        android:layout_marginLeft="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_16sdp"
+                        android:background="@drawable/rectangle_red"
                         android:fontFamily="@font/sf_pro_display_bold"
                         android:onClick="@{()->fragment.submit()}"
                         android:text="Submit"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="16sp"
-                         />
+                        android:theme="@style/CheckoutButton" />
 
-                    <Button
+
+
+
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/checkout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginRight="16dp"
-                        android:theme="@style/WhatsAppButton"
-                        android:background="@drawable/rectangle_green"
+                        android:layout_marginLeft="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_16sdp"
+                        android:background="@drawable/rectangle_red"
                         android:fontFamily="@font/sf_pro_display_bold"
                         android:onClick="@{()->fragment.addCheckout()}"
                         android:text="Checkout"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:visibility="gone" />
+                        android:theme="@style/CheckoutButton" />
 
-
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/cancel_order"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_16sdp"
                         android:background="@drawable/rectangle_red"
                         android:fontFamily="@font/sf_pro_display_bold"
                         android:onClick="@{()->fragment.cancelOrder()}"
                         android:text="Cancel Order"
                         android:textColor="@color/white"
                         android:textSize="16sp"
-                        android:theme="@style/CancelButton"
-                        android:visibility="gone" />
+                        android:theme="@style/CancelButton" />
 
 
                 </LinearLayout>

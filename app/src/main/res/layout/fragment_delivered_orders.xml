@@ -13,12 +13,16 @@
         type="Boolean" />
     </data>
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/bg_fafafa">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
         <!--    <include layout="@layout/toolbar_subcategory_blue"/>-->
 
         <LinearLayout
@@ -30,13 +34,12 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:background="@color/myblue"
+                android:background="@color/appBaseColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:weightSum="10"
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -46,44 +49,64 @@
                         android:id="@+id/imgBack"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        app:layout_constraintEnd_toStartOf="@+id/left_arrow"
                         android:src="@drawable/back_black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:tint="@color/white" />
 
 
                     <ImageView
                         android:id="@+id/left_arrow"
                         android:layout_weight="2"
+                        app:layout_constraintEnd_toStartOf="@+id/tvTitle"
+                        app:layout_constraintStart_toEndOf="@+id/imgBack"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:src="@drawable/ic_baseline_arrow_left_24"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent" />
 
                     <TextView
-                        android:gravity="center"
-                        android:layout_weight="4"
+                        android:id="@+id/tvTitle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tvTitle"
+                        android:layout_weight="4"
                         android:fontFamily="@font/sf_pro_display_semibold"
+                        android:gravity="center"
                         android:paddingStart="16.7dp"
                         android:paddingTop="19dp"
                         android:paddingBottom="19dp"
                         android:text="Entry Details"
                         android:textColor="@color/white"
-                        android:textSize="18.3sp" />
+                        android:textSize="18.3sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/left_arrow"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
                     <ImageView
                         android:id="@+id/right_arrow"
                         android:layout_weight="2"
                         android:src="@drawable/ic_baseline_arrow_right_24"
+                        app:layout_constraintEnd_toStartOf="@+id/imgFilter"
+                        app:layout_constraintStart_toEndOf="@+id/tvTitle"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_width="0dp"
                         android:layout_height="match_parent" />
 
                     <FrameLayout
-
+                        android:visibility="gone"
+                        android:id="@+id/date_filter"
+                        app:layout_constraintStart_toEndOf="@+id/right_arrow"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         android:layout_gravity="center"
                         android:layout_weight="2"
-                        android:id="@+id/date_filter"
+
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
 
@@ -102,8 +125,10 @@
 
                         <Spinner
                             android:id="@+id/orderFilter"
+                            android:visibility="gone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
+
 
                         <TextView
                             android:visibility="gone"
@@ -119,8 +144,19 @@
                             android:text="1"
                             android:textColor="@color/white"
                             android:textSize="10sp" />
+
                     </FrameLayout>
-                </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imgFilter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:src="@drawable/baseline_filter_alt_32"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </androidx.appcompat.widget.Toolbar>
@@ -129,134 +165,111 @@
         </LinearLayout>
 
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/payment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/appBaseColor"
+            android:padding="@dimen/_10sdp"
             android:orientation="vertical">
 
-            <FrameLayout
-                android:layout_width="match_parent"
+
+            <ImageView
+                android:id="@+id/imgOnlinePayment"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/myblue">
+                android:layout_gravity="center"
+                android:src="@drawable/ic_up_arrow_in_circular_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/online_payment"
+                app:layout_constraintEnd_toEndOf="@+id/online_payment"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="35dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
+            <TextView
+                android:id="@+id/txtTotalSales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:text="Total Sales"
+                app:layout_constraintStart_toEndOf="@+id/imgOnlinePayment"
+                app:layout_constraintEnd_toStartOf="@+id/imgCashPayment"
+                app:layout_constraintTop_toTopOf="parent"
+                android:letterSpacing="0.0625"
+                android:textColor="@color/white"
+                android:textSize="11.5sp" />
 
-                    <LinearLayout
-                        android:id="@+id/add_payment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_up_arrow_in_circular_button" />
-
-                        <TextView
-                            android:id="@+id/online_payment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/sf_pro_display_regular"
-                            android:text="Online Payment"
-                            android:letterSpacing="0.0625"
-                            android:textColor="@color/white"
-                            android:textSize="11.5sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/history"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingLeft="15dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/sf_pro_display_regular"
-                            android:text="Total Sales"
-                            android:letterSpacing="0.0625"
-                            android:textColor="@color/white"
-                            android:textSize="11.5sp" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/total_amount"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/sf_pro_display_regular"
-                                android:text="0"
-                                android:textColor="@color/white"
-                                android:textSize="27.3sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="bottom"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="5dp"
-                                android:fontFamily="@font/sf_pro_display_regular"
-                                android:text="₹"
-                                android:textColor="@color/white"
-                                android:textSize="11.7sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="10dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_down_arrow_in_circular_button" />
-
-                        <TextView
-                            android:id="@+id/cash_payment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/sf_pro_display_regular"
-                            android:text="Cash Payment"
-                            android:letterSpacing="0.0625"
-                            android:textColor="@color/white"
-                            android:textSize="11.5sp" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </FrameLayout>
+            <ImageView
+                android:id="@+id/imgCashPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/cash_payment"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/cash_payment"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_down_arrow_in_circular_button" />
 
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/online_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/total_amount"
+                app:layout_constraintTop_toBottomOf="@+id/imgOnlinePayment"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:text="Online"
+                android:letterSpacing="0.0625"
+                android:textColor="@color/white"
+                android:textSize="11.5sp" />
+
+            <TextView
+                android:id="@+id/total_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/txtTotalSales"
+                app:layout_constraintStart_toStartOf="@+id/txtTotalSales"
+                app:layout_constraintEnd_toEndOf="@+id/txtTotalSales"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="27.3sp" />
+            <TextView
+                android:id="@+id/txtRupee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toEndOf="@+id/total_amount"
+                app:layout_constraintTop_toTopOf="@+id/total_amount"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:text="₹"
+                android:textColor="@color/white"
+                android:textSize="11.7sp" />
+            <TextView
+                android:id="@+id/cash_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/total_amount"
+                app:layout_constraintTop_toBottomOf="@+id/imgCashPayment"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:text="Cash"
+                android:letterSpacing="0.0625"
+                android:textColor="@color/white"
+                android:textSize="11.5sp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <TextView
             android:visibility="gone"
@@ -341,5 +354,10 @@
             tools:listitem="@layout/item_pending_orders"
             android:overScrollMode="never"
             android:id="@+id/rvMangeAddress" />
-    </LinearLayout>
+
+
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

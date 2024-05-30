@@ -14,10 +14,13 @@ interface DatabaseManager {
     fun addCategory(list: List<Category>)
     fun addVariants(list: List<Variants>)
     fun addDelivered(list: List<PendingOrders>)
+    fun addStaffAttendance(list: List<Attendance>)
     fun getVariantsLive(id:String?):LiveData<List<Variants>>
     fun getCategoriesLive():LiveData<List<Category>>
     fun getAllOrdersByDate(today:Date):LiveData<List<PendingOrders>>
     fun getAllOrdersByMonth(today:Date):LiveData<List<PendingOrders>>
+    fun getSingleStaffAttendanceByYear(today:Date):LiveData<List<Attendance>>
+    fun getSingleStaffAttendanceByMonth(today:Date,id:String?):LiveData<List<Attendance>>
     fun getAllOrdersByYear(today:Date):LiveData<List<PendingOrders>>
     fun addProducts(products:List<Products>)
     fun clearAllItems()

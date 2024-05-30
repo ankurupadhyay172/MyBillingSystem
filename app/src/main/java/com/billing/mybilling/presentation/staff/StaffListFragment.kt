@@ -1,17 +1,15 @@
-package com.billing.mybilling.presentation.login
+package com.billing.mybilling.presentation.staff
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.billing.mybilling.BR
 import com.billing.mybilling.R
 import com.billing.mybilling.base.BaseFragment
 import com.billing.mybilling.data.model.request.CommonRequestModel
-import com.billing.mybilling.utils.SingleLiveDataEvent
-import com.billing.mybilling.databinding.FragmentHomeBinding
 import com.billing.mybilling.databinding.FragmentStaffListBinding
 import com.billing.mybilling.presentation.HomeViewModel
 import com.billing.mybilling.presentation.adapter.StaffAdapter
@@ -21,7 +19,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class StaffListFragment:BaseFragment<FragmentStaffListBinding,HomeViewModel>() {
-    private val homeViewModel: HomeViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by activityViewModels()
     @Inject
     lateinit var sessionManager: SessionManager
     @Inject
@@ -42,6 +40,8 @@ class StaffListFragment:BaseFragment<FragmentStaffListBinding,HomeViewModel>() {
         homeViewModel.selectedUser = null
         adapter.open = {
         homeViewModel.selectedUser = it
+//            findNavController().navigate(StaffListFragmentDirections.actionStaffListFragmentToStaffAttendanceFragment())
+              findNavController().navigate(StaffListFragmentDirections.actionStaffListFragmentToAttendanceDashBoardFragment())
         }
         adapter.options ={model->
             AlertDialog.Builder(requireContext()).setTitle(R.string.options)

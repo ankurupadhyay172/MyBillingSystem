@@ -32,7 +32,7 @@ class AddOrderFragment: BaseFragment<FragmentAddOrderBinding,HomeViewModel>() {
     var table:Table? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getViewDataBinding().isTable = true
+        getViewDataBinding().isTable = OrderType.TABLE.type
         getViewDataBinding().fragment = this
         getViewDataBinding().rvTable.adapter = adapter
 //        val table  = if (getViewDataBinding().isTable!!) OrderType.TABLE.type else OrderType.PACKING.type
@@ -45,15 +45,13 @@ class AddOrderFragment: BaseFragment<FragmentAddOrderBinding,HomeViewModel>() {
 
 
         getViewDataBinding().checkout.setOnClickListener {
-            if (table == null && getViewDataBinding().isTable!!) {
+            if (table == null && getViewDataBinding().isTable == OrderType.TABLE.type) {
                 showToast("Please Select Order Table ")
             } else {
-                val isTable =
-                    if (getViewDataBinding().isTable!!) OrderType.TABLE.type else OrderType.PACKING.type
+                val isTable = getViewDataBinding().isTable
                 val name = getViewDataBinding().edtCustomerName.text.toString()
                 val mobile = getViewDataBinding().edtCustomerMobile.text.toString()
                 showLoading(true)
-
                 homeViewModel.createMyOrder(
                     AddOrderModel(
                         name,
@@ -68,7 +66,7 @@ class AddOrderFragment: BaseFragment<FragmentAddOrderBinding,HomeViewModel>() {
                     it.getValueOrNull()?.let {
                         showLoading(false)
                         if (it.status == 1) {
-                            if (getViewDataBinding().isTable!!) {
+                            if (getViewDataBinding().isTable==OrderType.TABLE.type) {
                                 sendNotificationToOrder("New Order Found ",
                                     "On Table No : ${table?.table_name}",
                                     {
@@ -106,13 +104,36 @@ class AddOrderFragment: BaseFragment<FragmentAddOrderBinding,HomeViewModel>() {
 
     }
     fun onTableClick(){
-        getViewDataBinding().isTable = true
+        resetAllOrders()
+        getViewDataBinding().isTable = OrderType.TABLE.type
+        getViewDataBinding().imgDelivery.setImageResource(R.drawable.ic_radio)
+    }
+
+    fun onSwiggyClick(){
+        resetAllOrders()
+        getViewDataBinding().isTable = OrderType.SWIGGY.type
+        getViewDataBinding().imgSwiggy.setImageResource(R.drawable.ic_radio)
+    }
+
+    fun onZomatoClick(){
+        resetAllOrders()
+        getViewDataBinding().imgZomato.setImageResource(R.drawable.ic_radio)
+        getViewDataBinding().isTable = OrderType.ZOMATO.type
     }
     fun onPackingClick(){
+        resetAllOrders()
         list?.onEach { it.isSelected = false }
         adapter.notifyDataSetChanged()
         table = null
-        getViewDataBinding().isTable = false
+        getViewDataBinding().isTable = OrderType.PACKING.type
+        getViewDataBinding().imgTakeaway.setImageResource(R.drawable.ic_radio)
+    }
+
+    fun resetAllOrders(){
+        getViewDataBinding().imgDelivery.setImageResource(R.drawable.circle_radio)
+        getViewDataBinding().imgTakeaway.setImageResource(R.drawable.circle_radio)
+        getViewDataBinding().imgSwiggy.setImageResource(R.drawable.circle_radio)
+        getViewDataBinding().imgZomato.setImageResource(R.drawable.circle_radio)
     }
 
 

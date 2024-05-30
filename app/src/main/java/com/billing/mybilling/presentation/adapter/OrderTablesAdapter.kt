@@ -44,10 +44,8 @@ class OrderTablesAdapter @Inject constructor(): BaseListAdapter<Table,ItemTableB
         }
         binding.mainLayout.setOnClickListener {
             item?.updateSelected()
-            if (!item!!.isOccupied())
+//            if (!item!!.isOccupied())
             open?.invoke(item,position)
-            else
-                error?.invoke("Table already booked")
 
         }
     }

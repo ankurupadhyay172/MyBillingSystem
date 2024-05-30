@@ -10,6 +10,8 @@ enum class PageConfiguration(
     ORDERS(R.id.deliveredOrdersFragment,false),
     SPLASH(R.id.splashScreenFragment,false),
     LOGIN(R.id.loginFragment,false),
+    ANALYTICS(R.id.analyticsFragment,false),
+    SINGLE_ATTENDANCE(R.id.singleAttendanceListFragment,false),
     OTHER(0);
 
     companion object{

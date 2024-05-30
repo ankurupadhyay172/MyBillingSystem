@@ -10,12 +10,10 @@ import com.billing.mybilling.BR
 import com.billing.mybilling.R
 import com.billing.mybilling.base.BaseFragment
 import com.billing.mybilling.data.model.request.CommonRequestModel
-import com.billing.mybilling.data.model.response.PendingOrders
 import com.billing.mybilling.data.model.response.Products
 import com.billing.mybilling.databinding.FragmentPendingOrdersDetailsBinding
 import com.billing.mybilling.presentation.adapter.ProductsAdapter
 import com.billing.mybilling.utils.*
-import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -102,15 +100,6 @@ class PendingOrdersDetailsFragment :
                 layoutInflater,
                 getString(R.string.warning_complete_order),
                 {
-//                homeViewModel.updatePendingOrder(SelectedAction.UPDATE.type,homeViewModel.pendingOrders).observe(viewLifecycleOwner){
-//                    it.getValueOrNull()?.let {
-//                        showLoading(false)
-//                        if(it.status==1){
-//                            showToast("Order completed successfully")
-//                            findNavController().popBackStack()
-//                        }
-//                    }
-//                }
                     showLoading(false)
                     findNavController().navigate(PendingOrdersDetailsFragmentDirections.actionPendingOrdersDetailsFragmentToOrdersBillingFragment(args.title))
                 },
@@ -133,10 +122,7 @@ class PendingOrdersDetailsFragment :
             {
                 showLoading(true)
                 homeViewModel.pendingOrders?.order_status = OrderStatus.FAILED.status
-                homeViewModel.updatePendingOrder(
-                    SelectedAction.UPDATE_STATUS.type,
-                    homeViewModel.pendingOrders
-                ).observe(viewLifecycleOwner) {
+                homeViewModel.completeOrder(homeViewModel.pendingOrders).observe(viewLifecycleOwner){
                     it.getErrorIfExists()?.let {
                         showToast("${it.message}")
                         showLoading(false)
@@ -144,12 +130,12 @@ class PendingOrdersDetailsFragment :
                     it.getValueOrNull()?.let {
                         showLoading(false)
                         if (it.status == 1) {
-
                             showToast("Order cancelled successfully")
                             findNavController().popBackStack()
                         }
                     }
                 }
+
             },
             {
 
@@ -159,7 +145,14 @@ class PendingOrdersDetailsFragment :
     }
 
     fun submit(){
-        findNavController().popBackStack()
+        sessionManager1.getUser()?.let {
+            if (it.user_type_id ==UserType.STAFF.id){
+                findNavController().navigate(PendingOrdersDetailsFragmentDirections.actionPendingOrdersDetailsFragmentToPendingOrders())
+            }else{
+                findNavController().popBackStack()
+            }
+        }
+
     }
 //
 //    fun addDeliveryCharge(){

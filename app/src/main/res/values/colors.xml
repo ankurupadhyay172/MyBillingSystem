@@ -12,6 +12,7 @@
     <color name="blue">#ef3024</color>
     <color name="txt_color">#313131</color>
     <color name="green">#2ac17e</color>
+    <color name="dark_green2">#027148</color>
     <color name="black_25303c">#25303c</color>
     <color name="grey_828990">#828990</color>
     <color name="smoke_gray">#a2a2a2</color>
@@ -24,8 +25,14 @@
     <color name="silver_909397">#909397</color>
     <color name="bg_fafafa">#fafafa</color>
     <color name="myblue">#255bac</color>
-    <color name="appBaseColor">#b33c34</color>
-    <color name="appBgColor">#eae7e2</color>
+<!--    <color name="appBaseColor">#b33c34</color>-->
+<!--    <color name="appBaseColor">#011936</color>-->
+    <color name="appBaseColor">#32735d</color>
+    <color name="appBgColor">#ffffff</color>
+    <color name="itemBgColor2">#FFB681</color>
+    <color name="packingColor">#2e7960</color>
+    <color name="mainAppBgColor">#eee5dc</color>
+<!--    <color name="appBgColor">#eae7e2</color>-->
     <color name="itemBgColor">#ece3e3</color>
 
     <color name="black_bg">#21272E</color>
@@ -46,4 +53,5 @@
     <color name="root_yellow">#F6D522</color>
     <color name="bluePrimary">#6cd0e6</color>
     <color name="light_green">#90EE90</color>
+    <color name="orange">#FFA500</color>
 </resources>

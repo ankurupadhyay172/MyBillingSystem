@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-    <variable
-        name="title"
-        type="String" />
+        <variable
+            name="title"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -80,24 +80,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/liImage" />
 
-                <EditText
-                    android:id="@+id/edtTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_margin="@dimen/_18sdp"
-                    app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:background="@drawable/rectangle_silver_border"
-                    android:fontFamily="@font/sf_pro_display_medium"
-                    android:hint="@{`Enter`+title}"
-                    android:includeFontPadding="false"
-                    android:inputType="textCapWords"
-                    android:padding="15dp"
-                    android:textColor="@color/title_color_22282f"
-                    android:textColorHint="@color/silver_909397"
-                    android:textSize="15sp" />
+        <EditText
+            android:id="@+id/edtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_margin="@dimen/_18sdp"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/rectangle_silver_border"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:hint="@{`Enter`+title}"
+            android:includeFontPadding="false"
+            android:inputType="textCapWords"
+            android:padding="15dp"
+            android:textColor="@color/title_color_22282f"
+            android:textColorHint="@color/silver_909397"
+            android:textSize="15sp" />
 
 
 

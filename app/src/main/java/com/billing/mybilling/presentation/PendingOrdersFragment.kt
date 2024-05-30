@@ -49,6 +49,9 @@ class PendingOrdersFragment: BaseFragment<FragmentPendingOrdersBinding,HomeViewM
         getViewDataBinding().fabAdd.setOnClickListener {
             findNavController().navigate(PendingOrdersFragmentDirections.actionPendingOrdersToAddOrderFragment2())
         }
+        getViewDataBinding().imgQrCode.setOnClickListener {
+            findNavController().navigate(R.id.qrCodeFragment)
+        }
 
         adapter.options = {id,item->
             AlertDialog.Builder(requireContext()).setTitle(R.string.option_order)

@@ -42,7 +42,7 @@ class CategoryFragment: BaseFragment<FragmentCategoryBinding,HomeViewModel>() {
         getViewDataBinding().edtSearch.setOnClickListener {
             findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToSearchProductFragment(homeViewModel.pendingOrders?.order_id))
         }
-        showToast(""+homeViewModel.pendingOrders?.tableId)
+//        showToast(""+homeViewModel.pendingOrders?.tableId)
 //        lifecycleScope.launch {
 //            homeViewModel.getCategoryList()
 //        }

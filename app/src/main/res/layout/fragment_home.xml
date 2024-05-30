@@ -225,6 +225,31 @@
                     </LinearLayout>
 
                     <LinearLayout
+
+                        android:id="@+id/analytics"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/baseline_analytics_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Analytics"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_11sdp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/contactUs"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -256,6 +281,7 @@
                 android:id="@+id/container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+
                 android:orientation="vertical">
 
                 <include
@@ -281,18 +307,30 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvOrders"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        tools:listitem="@layout/item_pending_orders"
-                        android:layout_marginTop="10dp"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        android:orientation="vertical"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvTable"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/search"
+                            app:spanCount="3"
+                            tools:listitem="@layout/item_table" />
+
+
+                    </LinearLayout>
+
 
 
 
@@ -301,6 +339,7 @@
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </LinearLayout>
 
@@ -326,6 +365,18 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_add2"
             android:layout_marginBottom="25dp" />
+
+
+        <ImageView
+            android:id="@+id/imgQrCode"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_qr_code_scanner_24_black"
+            android:layout_marginBottom="25dp" />
+
 
     </RelativeLayout>
 </layout>

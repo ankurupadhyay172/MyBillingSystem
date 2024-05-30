@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    <variable
+        name="visibility"
+        type="android.view.View" />
+    <variable
+        name="isEmpty"
+        type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <LinearLayout
+            android:id="@+id/liTap"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16.2dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:backgroundTint="@color/appcolor"
+                android:id="@+id/liTapIn"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_gray_boxprofile"
+                android:orientation="horizontal"
+                android:paddingLeft="17dp"
+                android:paddingTop="18dp"
+                android:paddingRight="13dp"
+                android:layout_marginRight="7.5dp"
+                android:paddingBottom="18dp">
+
+                <TextView
+                    android:id="@+id/tvTable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:fontFamily="@font/sf_pro_display_semibold"
+                    android:text="Tap In"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16sdp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:backgroundTint="@color/green"
+                android:id="@+id/liTapOut"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_gray_boxprofile"
+                android:orientation="horizontal"
+                android:paddingLeft="17dp"
+                android:paddingTop="18dp"
+                android:paddingRight="13dp"
+                android:layout_marginLeft="7.5dp"
+                android:paddingBottom="18dp">
+
+                <TextView
+                    android:id="@+id/tvPacking"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sf_pro_display_semibold"
+                    android:text="Tap Out"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16sdp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/tapIn"
+            android:text="Tap In"
+            android:layout_marginTop="@dimen/_200sdp"
+            app:layout_constraintTop_toBottomOf="@+id/liTap"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/tapOut"
+            android:text="Tap Out"
+            app:layout_constraintTop_toBottomOf="@+id/tapIn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <Button
+            android:id="@+id/halfDay"
+            android:text="Half Day"
+            app:layout_constraintTop_toBottomOf="@+id/tapOut"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/leave"
+            android:text="Leave"
+            app:layout_constraintTop_toBottomOf="@+id/halfDay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
