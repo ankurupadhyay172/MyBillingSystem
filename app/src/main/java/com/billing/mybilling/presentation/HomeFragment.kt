@@ -7,16 +7,21 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.billing.mybilling.BR
 import com.billing.mybilling.R
 import com.billing.mybilling.base.BaseFragment
 import com.billing.mybilling.data.model.request.CommonRequestModel
 import com.billing.mybilling.data.model.response.PendingOrders
 import com.billing.mybilling.databinding.FragmentHomeBinding
+import com.billing.mybilling.presentation.adapter.PendingOrdersAdapter
 import com.billing.mybilling.presentation.adapter.PendingTableOrdersAdapter
 import com.billing.mybilling.session.SessionManager
+import com.billing.mybilling.utils.ActiveStatus
+import com.billing.mybilling.utils.BusinessType
 import com.billing.mybilling.utils.OrderStatus
 import com.billing.mybilling.utils.OrderType
+import com.billing.mybilling.utils.showForceWarningDialog
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -30,12 +35,16 @@ class HomeFragment:BaseFragment<FragmentHomeBinding,HomeViewModel>() {
 
     @Inject
     lateinit var tableAdapter: PendingTableOrdersAdapter
+    @Inject
+    lateinit var adapter: PendingOrdersAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
         getViewDataBinding().rvTable.adapter = tableAdapter
+
+        checkBussiness()
         getViewDataBinding().manageProducts.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToViewCategoryListFragment())
         }
@@ -78,10 +87,18 @@ class HomeFragment:BaseFragment<FragmentHomeBinding,HomeViewModel>() {
         }
 
         getOrders()
+        checkBusinessDetail()
 
         tableAdapter.open = {id,item->
             homeViewModel.pendingOrders = item
             val orderOn = if (item!!.order_on==OrderType.TABLE.type) "Table No : "+item.table_no else "Packing"
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPendingOrdersDetailsFragment(id!!,orderOn,Gson().toJson(item)))
+
+        }
+
+        adapter.open = {id,item->
+            homeViewModel.pendingOrders = item
+            val orderOn = if (item!!.order_on==OrderType.TABLE.type) item.table_no else ""
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPendingOrdersDetailsFragment(id!!,orderOn,Gson().toJson(item)))
 
         }
@@ -93,6 +110,16 @@ class HomeFragment:BaseFragment<FragmentHomeBinding,HomeViewModel>() {
             getOrders()
         }
 
+
+    }
+
+    private fun checkBussiness() {
+            if (sessionManager.getUser()?.business_type== BusinessType.BABER.type){
+                val manager  = LinearLayoutManager(requireContext())
+                manager.orientation = LinearLayoutManager.VERTICAL
+                getViewDataBinding().rvTable.layoutManager = manager
+                getViewDataBinding().rvTable.adapter = adapter
+            }
 
     }
 
@@ -118,6 +145,7 @@ class HomeFragment:BaseFragment<FragmentHomeBinding,HomeViewModel>() {
                 getViewDataBinding().progressBar.visibility = View.GONE
                 getViewDataBinding().swipeToRefresh.isRefreshing = false
                 tableAdapter.submitList(it.result)
+                adapter.submitList(it.result)
                 if (it.status==0){
                     showLoading(false)
                     getViewDataBinding().isEmpty = true
@@ -127,6 +155,27 @@ class HomeFragment:BaseFragment<FragmentHomeBinding,HomeViewModel>() {
             }
         }
 
+    }
+
+    private fun checkBusinessDetail() {
+        val number = "+919664206361"
+        homeViewModel.getBusinessDetail(CommonRequestModel(sessionManager.getUser()?.business_id)).observe(this) {
+            it.getValueOrNull()?.let {
+                if (it.status==1){
+                    if (it.result.active_status != ActiveStatus.ACTIVE.type){
+                        val dialog = showForceWarningDialog(requireActivity(),layoutInflater,"Please renew your subscriontion") {
+                            val url = "https://api.whatsapp.com/send?phone=$number"
+                            val i = Intent(Intent.ACTION_VIEW)
+                            i.data = Uri.parse(url)
+                            startActivity(i)
+                        }
+                        dialog.setCancelable(false)
+                        dialog.show()
+                    }
+                }
+            }
+
+        }
     }
 
 

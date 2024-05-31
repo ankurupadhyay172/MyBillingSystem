@@ -6,6 +6,10 @@ enum class ActiveStatus(val type:Int){
     INACTIVE(2)
 }
 
+enum class BusinessType(val type:String){
+    Restaurent("1"),
+    BABER("2")
+}
 
 
 enum class SelectedAction(val type:String){

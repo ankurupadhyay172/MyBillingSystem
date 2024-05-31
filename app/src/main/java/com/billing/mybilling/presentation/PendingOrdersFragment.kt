@@ -1,6 +1,8 @@
 package com.billing.mybilling.presentation
 
 import android.app.AlertDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -14,9 +16,11 @@ import com.billing.mybilling.databinding.FragmentPendingOrdersBinding
 import com.billing.mybilling.notification.sendNotificationToOrder
 import com.billing.mybilling.presentation.adapter.PendingOrdersAdapter
 import com.billing.mybilling.session.SessionManager
+import com.billing.mybilling.utils.ActiveStatus
 import com.billing.mybilling.utils.OrderStatus
 import com.billing.mybilling.utils.SelectedAction
 import com.billing.mybilling.utils.setOrderStatus
+import com.billing.mybilling.utils.showForceWarningDialog
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -36,6 +40,7 @@ class PendingOrdersFragment: BaseFragment<FragmentPendingOrdersBinding,HomeViewM
 
         showLoading(true)
         readOrders()
+        checkBusinessDetail()
 
         getViewDataBinding().swipeToRefresh.setOnRefreshListener {
             readOrders()
@@ -100,6 +105,27 @@ class PendingOrdersFragment: BaseFragment<FragmentPendingOrdersBinding,HomeViewM
                 }
 
             }
+        }
+    }
+
+    private fun checkBusinessDetail() {
+        val number = "+919664206361"
+        homeViewModel.getBusinessDetail(CommonRequestModel(sessionManager.getUser()?.business_id)).observe(this) {
+            it.getValueOrNull()?.let {
+                if (it.status==1){
+                    if (it.result.active_status != ActiveStatus.ACTIVE.type){
+                        val dialog = showForceWarningDialog(requireActivity(),layoutInflater,"Please renew your subscriontion") {
+                            val url = "https://api.whatsapp.com/send?phone=$number"
+                            val i = Intent(Intent.ACTION_VIEW)
+                            i.data = Uri.parse(url)
+                            startActivity(i)
+                        }
+                        dialog.setCancelable(false)
+                        dialog.show()
+                    }
+                }
+            }
+
         }
     }
 

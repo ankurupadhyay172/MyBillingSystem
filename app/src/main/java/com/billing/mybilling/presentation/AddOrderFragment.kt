@@ -16,6 +16,7 @@ import com.billing.mybilling.databinding.FragmentAddOrderBinding
 import com.billing.mybilling.notification.sendNotificationToOrder
 import com.billing.mybilling.presentation.adapter.OrderTablesAdapter
 import com.billing.mybilling.session.SessionManager
+import com.billing.mybilling.utils.BusinessType
 import com.billing.mybilling.utils.OrderStatus
 import com.billing.mybilling.utils.OrderType
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,9 +44,10 @@ class AddOrderFragment: BaseFragment<FragmentAddOrderBinding,HomeViewModel>() {
             }
         }
 
-
+        checkBusiness()
         getViewDataBinding().checkout.setOnClickListener {
-            if (table == null && getViewDataBinding().isTable == OrderType.TABLE.type) {
+
+            if (table == null && getViewDataBinding().isTable == OrderType.TABLE.type&&sessionManager.getUser()?.business_type!=BusinessType.BABER.type) {
                 showToast("Please Select Order Table ")
             } else {
                 val isTable = getViewDataBinding().isTable
@@ -103,6 +105,14 @@ class AddOrderFragment: BaseFragment<FragmentAddOrderBinding,HomeViewModel>() {
         }
 
     }
+
+    private fun checkBusiness() {
+        if (sessionManager.getUser()?.business_type==BusinessType.BABER.type){
+            getViewDataBinding().liOrder1.visibility = View.GONE
+            getViewDataBinding().liOrder2.visibility = View.GONE
+        }
+    }
+
     fun onTableClick(){
         resetAllOrders()
         getViewDataBinding().isTable = OrderType.TABLE.type

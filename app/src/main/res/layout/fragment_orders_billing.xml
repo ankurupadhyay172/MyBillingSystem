@@ -693,6 +693,7 @@ Sat,Sun : 11:00am to 05:00pm "
                         android:background="@drawable/rectangle_green"
                         android:backgroundTint="@color/appBaseColor"
                         android:fontFamily="@font/sf_pro_display_bold"
+                        android:onClick="@{()->fragment.completeCheckout(true)}"
                         android:text="Complete and Share "
                         android:textColor="@color/white"
                         android:textSize="16sp" />

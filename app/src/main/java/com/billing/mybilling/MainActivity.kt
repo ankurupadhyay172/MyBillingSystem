@@ -50,8 +50,7 @@ class MainActivity : BaseActivity() {
     lateinit var sessionManager: SessionManager
     @Inject
     lateinit var databaseManager: DatabaseManager
-    @Inject
-    lateinit var homeViewModel: HomeViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,30 +69,11 @@ class MainActivity : BaseActivity() {
         }
 
         requestPermission()
-        checkBusinessDetail()
+
 
     }
 
-    private fun checkBusinessDetail() {
-        val number = "+919664206361"
-        homeViewModel.getBusinessDetail(CommonRequestModel(sessionManager.getUser()?.business_id)).observe(this) {
-            it.getValueOrNull()?.let {
-                if (it.status==1){
-                    if (it.result.active_status == ActiveStatus.ACTIVE.type){
-                       val dialog = showForceWarningDialog(this,layoutInflater,"Please renew your subscriontion") {
-                           val url = "https://api.whatsapp.com/send?phone=$number"
-                           val i = Intent(Intent.ACTION_VIEW)
-                           i.data = Uri.parse(url)
-                           startActivity(i)
-                        }
-                        dialog.setCancelable(false)
-                        dialog.show()
-                    }
-                }
-            }
 
-        }
-    }
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
