@@ -62,6 +62,13 @@ class HomeFragment:BaseFragment<FragmentHomeBinding,HomeViewModel>() {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAnalyticsFragment())
         }
 
+        val number = "+918769746066"
+        val companyName = "ABC Company"
+        val contactNumber = "123-456-7890"
+        val items = listOf("Item 1", "Item 2", "Item 3")
+
+        val bill = homeViewModel.createBill(companyName, contactNumber, items)
+
         getViewDataBinding().imgQrCode.setOnClickListener {
 //            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToQrCodeFragment())
 //            val url = "https://api.whatsapp.com/send?phone=$number"
@@ -79,7 +86,7 @@ class HomeFragment:BaseFragment<FragmentHomeBinding,HomeViewModel>() {
 //            startActivity(i)
         }
 
-        val number = "+916378999146"
+
         getViewDataBinding().contactUs.setOnClickListener {
 //            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDeliveredOrdersFragment())
 
