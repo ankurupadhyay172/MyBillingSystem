@@ -44,10 +44,31 @@ class HomeFragment:BaseFragment<FragmentHomeBinding,HomeViewModel>() {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDeliveredOrdersFragment())
 
         }
-        getViewDataBinding().manageUsers.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToStaffListFragment())
-        }
         val number = "+918769746066"
+        val companyName = "ABC Company"
+        val contactNumber = "123-456-7890"
+        val items = listOf("Item 1", "Item 2", "Item 3")
+
+        val bill = homeViewModel.createBill(companyName, contactNumber, items)
+
+        getViewDataBinding().manageUsers.setOnClickListener {
+//            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToStaffListFragment())
+            val url = "https://api.whatsapp.com/send?phone=$number"
+            val i = Intent(Intent.ACTION_VIEW)
+
+            val uri = Uri.Builder()
+                .scheme("https")
+                .authority("api.whatsapp.com")
+                .path("/send")
+                .appendQueryParameter("phone", number)
+                .appendQueryParameter("text", bill)
+                .build()
+//            i.data = Uri.parse(url)
+            i.data = uri
+            startActivity(i)
+
+        }
+
         getViewDataBinding().contactUs.setOnClickListener {
 //            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDeliveredOrdersFragment())
 
