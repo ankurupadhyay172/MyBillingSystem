@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000">
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_background_capsule_white_round_8"
+            android:layout_marginHorizontal="32dp"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23.3dp"
+                android:fontFamily="@font/sf_pro_display_semibold"
+                android:includeFontPadding="false"
+                android:text="Mobile Number"
+                android:textColor="@color/black_25303c"
+                android:textSize="16.7sp" />
+
+
+        <EditText
+            android:id="@+id/edtMobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_silver_border"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:includeFontPadding="false"
+            android:inputType="number"
+            android:maxLength="10"
+            android:padding="15dp"
+            android:textColor="@color/title_color_22282f"
+            android:textColorHint="@color/silver_909397"
+            android:textSize="15sp" />
+
+
+            <Button
+                android:id="@+id/submit"
+                android:text="Submit"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:textColor="@color/white"
+                android:background="@drawable/ic_background_capsule_black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+</FrameLayout>
+</layout>
