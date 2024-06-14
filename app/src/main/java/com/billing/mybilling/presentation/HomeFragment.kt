@@ -71,19 +71,19 @@ class HomeFragment:BaseFragment<FragmentHomeBinding,HomeViewModel>() {
 
         getViewDataBinding().imgQrCode.setOnClickListener {
 //            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToQrCodeFragment())
-//            val url = "https://api.whatsapp.com/send?phone=$number"
-//            val i = Intent(Intent.ACTION_VIEW)
-//
-//            val uri = Uri.Builder()
-//                .scheme("https")
-//                .authority("api.whatsapp.com")
-//                .path("/send")
-//                .appendQueryParameter("phone", number)
-//                .appendQueryParameter("text", bill)
-//                .build()
-////            i.data = Uri.parse(url)
-//            i.data = uri
-//            startActivity(i)
+            val url = "https://api.whatsapp.com/send?phone=$number"
+            val i = Intent(Intent.ACTION_VIEW)
+
+            val uri = Uri.Builder()
+                .scheme("https")
+                .authority("api.whatsapp.com")
+                .path("/send")
+                .appendQueryParameter("phone", number)
+                .appendQueryParameter("text", bill)
+                .build()
+//            i.data = Uri.parse(url)
+            i.data = uri
+            startActivity(i)
         }
 
 

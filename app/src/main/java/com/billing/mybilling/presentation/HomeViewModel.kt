@@ -298,4 +298,25 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
         return Base64.encodeToString(b, Base64.DEFAULT)
     }
 
+    fun createBill(companyName: String, contactNumber: String, items: List<String>): String {
+        val builder = StringBuilder()
+
+        // Add company name and contact number
+        builder.appendLine("Company Name: $companyName")
+        builder.appendLine("Contact Number: $contactNumber")
+        builder.appendLine()
+
+        // Add items
+        builder.appendLine("Items:")
+        for ((index, item) in items.withIndex()) {
+            builder.appendLine("${index + 1}. $item")
+        }
+        builder.appendLine()
+
+        // Add closing message
+        builder.appendLine("Thanks for visiting us!")
+
+        return builder.toString()
+    }
+
 }
